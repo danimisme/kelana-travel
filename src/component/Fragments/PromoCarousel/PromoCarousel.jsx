@@ -68,10 +68,17 @@ export default function PromoCarousel() {
                 alt="..."
               />
               <div
-                className={`position-absolute bottom-0 bg-dark bg-opacity-50 w-100 text-white p-2 d-flex flex-column justify-content-between promo_text`}
+                className={`position-absolute bottom-0 bg-dark bg-opacity-50 w-100 text-white p-2 d-flex flex-column justify-content-between promo_text text-center `}
               >
-                <h5 className="card-title fs-6 fw-semibold ">{promo.title}</h5>
-                <p className="card-text fs-6 ">{promo.description}</p>
+                <h5 className="card-title fs-6 fw-semibold text-orange ">
+                  {promo.title}
+                </h5>
+                <p className="card-text text-decoration-line-through text-orange">
+                  {promo?.promo_discount_price?.toLocaleString("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                  })}
+                </p>
               </div>
             </Link>
           </div>
