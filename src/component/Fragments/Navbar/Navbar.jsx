@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearUser } from "@/redux/slices/UserLoggedSlice";
-import { setUser } from "@/redux/slices/UserLoggedSlice";
+import "./Navbar.css";
+import { clearUser, setUser } from "../../../redux/slice/userLoggedSlice";
 
 export default function Navbar() {
   const { userLog } = useAuth();
