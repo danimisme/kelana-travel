@@ -6,7 +6,9 @@ export default function Sidebar() {
   const sidebarShow = useSelector((state) => state.sidebar.sidebarShow);
   const dispacth = useDispatch();
   return (
-    <div className={` sidebar ${sidebarShow ? "show" : "hide"}  `}>
+    <div
+      className={` sidebar ${sidebarShow ? "showSidebar" : "hideSidebar"}  `}
+    >
       <div className="button" onClick={() => dispacth(toggleSidebar())}>
         {sidebarShow ? (
           <i className="bi bi-arrow-left-circle fs-1 "></i>

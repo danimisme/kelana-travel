@@ -12,12 +12,12 @@
     transition: all 0.5s ease
 }
 
-.hide {
+.hideSidebar {
     transform: translate(-100%, 0);
     transition: all 0.5s ease;
 }
 
-.show {
+.showSidebar {
     transform: translate(0, 0);
     transition: all 0.5s ease;
 }
