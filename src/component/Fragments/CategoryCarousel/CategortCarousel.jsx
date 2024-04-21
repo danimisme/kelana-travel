@@ -2,6 +2,7 @@ import useGetData from "../../../hooks/useGetData";
 import { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
+import "./CategoryCarousel.css";
 
 export default function CategoryCarousel() {
   const [Categories, setCategories] = useState([]);
