@@ -1,0 +1,25 @@
+.nav {
+
+    background-color: #8fd5ae;
+}
+
+.hide {
+    transform: translate(0, -100%);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+
+.show {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+
+.scrolled {
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+
+
