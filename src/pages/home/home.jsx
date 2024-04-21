@@ -1,3 +1,4 @@
+import BannerCarousel from "../../component/Fragments/BannerCarousel/BannerCarousel";
 import "./home.css";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
           Adventure to Explore <br /> Through the Beautiful World
         </h1>
       </div>
+      <BannerCarousel />
     </main>
   );
 }
