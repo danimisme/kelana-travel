@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useGetData from "../../../hooks/useGetData";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
+import "./BannerCarousel.css";
 
 export default function BannerCarousel() {
   const [banners, setBanners] = useState([]);
@@ -25,7 +26,7 @@ export default function BannerCarousel() {
   }, []);
 
   return (
-    <div>
+    <div className="banner">
       <h2 className="text-center text-white mb-2">Popular Destinations</h2>
       <p className="text-center text-white lead d-none d-md-block">
         &quot;Feel the journey that you may have never experienced before.&quot;
