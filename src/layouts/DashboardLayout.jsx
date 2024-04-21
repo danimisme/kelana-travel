@@ -3,7 +3,7 @@ import Sidebar from "../component/Fragments/Sidebar/Sidebar";
 
 export default function DashboardLayout() {
   return (
-    <div className="bg-info">
+    <div>
       <Sidebar />
       <Outlet />
     </div>
