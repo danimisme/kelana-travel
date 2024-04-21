@@ -1,6 +1,7 @@
 import CardPromo from "../../component/Fragments/CardPromo/CardPromo";
 import useGetData from "../../hooks/useGetData";
 import { useEffect, useState } from "react";
+import Layout from "../../layouts/Layout";
 
 export default function PromoPage() {
   const { getData } = useGetData();
@@ -9,13 +10,15 @@ export default function PromoPage() {
     getData("promos").then((res) => setPromos(res.data.data));
   });
   return (
-    <div className="mt-5 container-lg">
-      <h1>Promo Page</h1>
-      <div className="row">
-        {promos.map((promo) => (
-          <CardPromo promo={promo} key={promo.id} />
-        ))}
+    <Layout>
+      <div className="mt-5 container-lg">
+        <h1>Promo Page</h1>
+        <div className="row">
+          {promos.map((promo) => (
+            <CardPromo promo={promo} key={promo.id} />
+          ))}
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }
