@@ -2,6 +2,7 @@ import useGetData from "../../hooks/useGetData";
 import { useEffect, useState } from "react";
 import CardActivity from "../../component/Fragments/CardAcivity/CardActivity";
 import SelectOption from "../../component/Elements/SelectOption/SelectOption";
+import "./ActivityPage.css";
 
 export default function ActivityPage() {
   const { getData } = useGetData();
