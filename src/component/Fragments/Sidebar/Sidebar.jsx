@@ -19,17 +19,17 @@ export default function Sidebar() {
       <h2 className="mt-5 ">Dashboard</h2>
       <ul className="list-group list-group-flush mt-5">
         <Link to="/dashboard/user" className="text-decoration-none text-dark">
-          <li className="list-group-item bg-info-subtle">
+          <li className="list-group-item">
             <i className="bi bi-person-circle me-1"></i>User
           </li>
         </Link>
         <Link to="/dashboard/banner" className="text-decoration-none text-dark">
-          <li className="list-group-item bg-info-subtle">
+          <li className="list-group-item">
             <i className="bi bi-image me-1"></i>Banner
           </li>
         </Link>
         <Link to="/dashboard/promo" className="text-decoration-none text-dark">
-          <li className="list-group-item bg-info-subtle">
+          <li className="list-group-item">
             <i className="bi bi-percent me-1"></i>Promo
           </li>
         </Link>
@@ -37,7 +37,7 @@ export default function Sidebar() {
           to="/dashboard/category"
           className="text-decoration-none text-dark"
         >
-          <li className="list-group-item bg-info-subtle">
+          <li className="list-group-item">
             <i className="bi bi-tags-fill me-1"></i>Categoty
           </li>
         </Link>
@@ -45,7 +45,7 @@ export default function Sidebar() {
           to="/dashboard/activity"
           className="text-decoration-none text-dark"
         >
-          <li className="list-group-item bg-info-subtle">
+          <li className="list-group-item">
             <i className="bi bi-airplane-fill me-1"></i>Activity
           </li>
         </Link>
