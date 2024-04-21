@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import useGetData from "@/services/useGetData";
 import { Link } from "react-router-dom";
 
-export default function Promo() {
+export default function PromoCarousel() {
   const [promos, setPromos] = useState([]);
   const { getData } = useGetData();
   const handleDragStart = (e) => e.preventDefault();
