@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./CardActivity.css";
 export default function CardActivity({ activity }) {
   return (
-    <Link to={`/activity/${activity.id}`}>
+    <Link to={`/activity/${activity.id} `} className="text-decoration-none">
       <div className="card">
         <img
           src={activity.imageUrls[0]}
