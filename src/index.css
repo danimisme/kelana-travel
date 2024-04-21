@@ -9,3 +9,14 @@ body {
 .background-orange {
     background-color: #ED9455;
 }
+
+.btn-orange {
+    background-color: #ED9455;
+    color: white;
+}
+
+.btn-orange:hover {
+    background-color: white;
+    color: #ED9455;
+    border: 1px solid #ED9455;
+}
