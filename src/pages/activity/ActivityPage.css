@@ -1,4 +1,4 @@
-.jumbotron {
+.hero {
     background-image: url('/images/header.jpg');
     background-size: cover;
     background-position: center;
@@ -19,7 +19,7 @@
 }
 
 @media screen and (max-width: 800px) {
-    .jumbotron {
+    .hero {
         max-height: 70vh;
     }
     .header {

@@ -35,7 +35,7 @@ export default function ActivityPage() {
   return (
     <Layout>
       <div
-        className={`jumbotron d-flex align-items-center justify-content-center text-white `}
+        className={`hero d-flex align-items-center justify-content-center text-white `}
       >
         <h1 className={`text_shadow text-center fs-1 fw-bold`}>
           Challenge, Adventure, Discovery. <br /> Explore the World with Us!

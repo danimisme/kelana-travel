@@ -17,7 +17,7 @@ export default function CardActivity({ activity }) {
             <h6 className={` title card-title`}>{activity.title}</h6>
             <p className={` text_location`}>
               <i className="bi bi-geo-alt-fill text-success"></i>
-              {` activity.city activity.province`}
+              {` ${activity.city}, ${activity.province}`}
             </p>
           </div>
           <div>
