@@ -1,0 +1,30 @@
+.jumbotron {
+    background-image: url('/images/header.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+.text_shadow {
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+
+}
+
+@media screen and (max-width: 800px) {
+    .jumbotron {
+        max-height: 70vh;
+    }
+    .header {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+}
