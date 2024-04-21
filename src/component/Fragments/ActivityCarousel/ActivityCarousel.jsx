@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import CardActivity from "../CardAcivity/CardActivity";
 import { Link } from "react-router-dom";
 import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
+import "./ActivityCarousel.css";
 
 export default function ActivityCarousel() {
   const [activities, setActivities] = useState([]);
@@ -59,7 +61,7 @@ export default function ActivityCarousel() {
         responsive={responsive}
       >
         {activities.map((activity) => (
-          <div key={activity.id} className="mx-3">
+          <div key={activity.id} className="mx-3" onDragStart={handleDragStart}>
             <CardActivity key={activity.id} activity={activity} />
           </div>
         ))}
