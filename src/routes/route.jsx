@@ -1,5 +1,6 @@
 import DashboardLayout from "../layouts/DashboardLayout";
 import ActivityPage from "../pages/activity/ActivityPage";
+import DetailActivityPage from "../pages/detailActivity/DetailActivityPage";
 import Home from "../pages/home/home";
 import LoginPage from "../pages/login/loginPage";
 
@@ -15,6 +16,10 @@ export const routeList = [
   {
     path: "/activity",
     element: <ActivityPage />,
+  },
+  {
+    path: "activity/:id",
+    element: <DetailActivityPage />,
   },
 
   {
