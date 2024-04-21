@@ -1,5 +1,6 @@
 import DashboardLayout from "../layouts/DashboardLayout";
 import ActivityPage from "../pages/activity/ActivityPage";
+import UserDashboardPage from "../pages/dashboard/user/userDashboardPage";
 import DetailActivityPage from "../pages/detailActivity/DetailActivityPage";
 import DetailPromoPage from "../pages/detailPromo/detailPromo";
 import Home from "../pages/home/home";
@@ -38,7 +39,7 @@ export const routeList = [
     children: [
       {
         path: "user",
-        element: <div>User</div>,
+        element: <UserDashboardPage />,
       },
     ],
   },
