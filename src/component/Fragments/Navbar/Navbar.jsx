@@ -66,24 +66,24 @@ export default function Navbar() {
         >
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item ms-lg-3">
-              <Link href="/" className="nav-link active" aria-current="page">
+              <Link to="/" className="nav-link active" aria-current="page">
                 Home
               </Link>
             </li>
             <li className="nav-item ms-lg-3">
-              <Link href="/activity" className="nav-link">
+              <Link to="/activity" className="nav-link">
                 Activity
               </Link>
             </li>
 
             <li className="nav-item ms-lg-3">
-              <Link href="/promo" className="nav-link" aria-disabled="true">
+              <Link to="/promo" className="nav-link" aria-disabled="true">
                 Promo
               </Link>
             </li>
             {user?.role === "admin" && (
               <li className="nav-item ms-lg-3">
-                <Link href="/dashboard/user" className="nav-link">
+                <Link to="/dashboard/user" className="nav-link">
                   Dashboard
                 </Link>
               </li>
@@ -97,7 +97,7 @@ export default function Navbar() {
           {user?.name ? (
             <div className="nav-link dropdown ">
               <Link
-                href="/"
+                to="/"
                 className="nav-link dropdown-toggle d-flex align-items-center"
                 role="button"
                 data-bs-toggle="dropdown"
@@ -114,7 +114,7 @@ export default function Navbar() {
               </Link>
               <ul className="dropdown-menu">
                 <li>
-                  <Link href="/profile" className="dropdown-item">
+                  <Link to="/profile" className="dropdown-item">
                     Profile
                   </Link>
                 </li>
@@ -126,7 +126,7 @@ export default function Navbar() {
               </ul>
             </div>
           ) : (
-            <Link href="/login" className="btn btn-outline-dark btn-sm ">
+            <Link to="/login" className="btn btn-outline-dark btn-sm ">
               <i className="bi bi-person-fill"></i> Login
             </Link>
           )}
