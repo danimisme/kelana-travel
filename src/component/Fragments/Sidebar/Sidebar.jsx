@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { toggleSidebar } from "../../../redux/slice/sidebarSlice";
+import "./Sidebar.css";
 export default function Sidebar() {
   const sidebarShow = useSelector((state) => state.sidebar.sidebarShow);
   const dispacth = useDispatch();
