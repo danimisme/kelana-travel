@@ -12,11 +12,13 @@ export default function PromoPage() {
   return (
     <Layout>
       <div className="mt-5 container-lg">
-        <h1>Promo Page</h1>
-        <div className="row">
-          {promos.map((promo) => (
-            <CardPromo promo={promo} key={promo.id} />
-          ))}
+        <div className="py-5">
+          <h1>Promo Page</h1>
+          <div className="row">
+            {promos.map((promo) => (
+              <CardPromo promo={promo} key={promo.id} />
+            ))}
+          </div>
         </div>
       </div>
     </Layout>
