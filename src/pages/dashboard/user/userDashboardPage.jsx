@@ -9,16 +9,15 @@ export default function UserDashboardPage() {
   useEffect(() => {
     userLog("all-user", setUsers);
   }, []);
-  console.log(users);
   return (
     <Layout>
       <div className="mt-5 container-lg">
         <div className="py-5">
           <h1>User Dashboard</h1>
           <div className="row">
-            {users.map((user) => (
-              <div className="col-10 col-md-4 col-lg-3" key={user.id}>
-                <CardUser user={user} />
+            {users.map((user, index) => (
+              <div className="col-10 col-md-4 col-lg-3 mx-auto" key={user.id}>
+                <CardUser user={user} index={index} />
               </div>
             ))}
           </div>
