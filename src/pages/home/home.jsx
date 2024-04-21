@@ -1,3 +1,4 @@
+import ActivityCarousel from "../../component/Fragments/ActivityCarousel/ActivityCarousel";
 import BannerCarousel from "../../component/Fragments/BannerCarousel/BannerCarousel";
 import PromoCarousel from "../../component/Fragments/PromoCarousel/PromoCarousel";
 import "./home.css";
@@ -12,6 +13,7 @@ export default function Home() {
       </div>
       <BannerCarousel />
       <PromoCarousel />
+      <ActivityCarousel />
     </main>
   );
 }
