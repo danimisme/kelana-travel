@@ -68,7 +68,7 @@ export default function ActivityCarousel() {
       </AliceCarousel>
 
       <div className="d-flex justify-content-center">
-        <Link href="/activity">
+        <Link to="/activity">
           <button className="btn btn-success">
             See All Activities <i className="bi bi-arrow-right"></i>
           </button>
