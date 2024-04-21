@@ -15,7 +15,9 @@ export default function Navbar() {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    getUserLogged();
+    if (localStorage.getItem("token")) {
+      getUserLogged();
+    }
   }, []);
 
   const logout = async () => {
