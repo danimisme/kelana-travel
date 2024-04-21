@@ -21,8 +21,14 @@ export default function CardActivity({ activity }) {
             </p>
           </div>
           <div>
-            <p>
+            <p className="p-0 m-0 text-decoration-line-through">
               {activity.price.toLocaleString("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              })}
+            </p>
+            <p>
+              {activity.price_discount.toLocaleString("id-ID", {
                 style: "currency",
                 currency: "IDR",
               })}
