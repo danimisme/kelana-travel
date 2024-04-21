@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import CardActivity from "../../component/Fragments/CardAcivity/CardActivity";
 import SelectOption from "../../component/Elements/SelectOption/SelectOption";
 import "./ActivityPage.css";
+import Layout from "../../layouts/Layout";
 
 export default function ActivityPage() {
   const { getData } = useGetData();
@@ -32,7 +33,7 @@ export default function ActivityPage() {
   };
 
   return (
-    <>
+    <Layout>
       <div
         className={`jumbotron d-flex align-items-center justify-content-center text-white `}
       >
@@ -88,6 +89,6 @@ export default function ActivityPage() {
           ))}
         </div>
       </div>
-    </>
+    </Layout>
   );
 }
