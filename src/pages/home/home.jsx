@@ -10,7 +10,7 @@ export default function Home() {
     <Layout>
       <main>
         <div className="jumbotron d-flex align-items-center justify-content-center text-white ">
-          <h1>
+          <h1 className="text_shadow fs-1 fw-bold">
             Adventure to Explore <br /> Through the Beautiful World
           </h1>
         </div>
