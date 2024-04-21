@@ -30,7 +30,7 @@ export default function PromoCarousel() {
     <div className={`promo_container container-fluid`}>
       <div className="d-flex justify-content-start align-items-baseline px-3">
         <div>
-          <i className="bi bi-ticket-perforated-fill me-2 fs-2 text-success"></i>
+          <i className="bi bi-ticket-perforated-fill me-2 fs-2 text-orange"></i>
         </div>
         <div className="d-flex flex-column">
           <h3 className=" fw-bold m-0">Special Promo For You !</h3>
