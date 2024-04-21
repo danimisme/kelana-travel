@@ -93,11 +93,11 @@ export default function Navbar() {
           </ul>
         </div>
         <div
-          className="collapse navbar-collapse justify-content-end align-items-start "
+          className="collapse navbar-collapse justify-content-end align-items-center "
           id="navbarSupportedContent"
         >
           {user?.name ? (
-            <div className="nav-link dropdown ">
+            <div className="nav-link dropdown-center ">
               <Link
                 to="/"
                 className="nav-link dropdown-toggle d-flex align-items-center"
@@ -110,11 +110,11 @@ export default function Navbar() {
                   alt={user.name}
                   width={35}
                   height={35}
-                  className="img-fluid rounded-circle me-2 profile_picture"
+                  className="img-fluid rounded-circle me-2 profile_picture "
                 />
-                <p className="m-0">{user.name}</p>
+                <p className="m-0 text-dark">{user.name}</p>
               </Link>
-              <ul className="dropdown-menu">
+              <ul className="dropdown-menu dropdown-menu-end">
                 <li>
                   <Link to="/profile" className="dropdown-item">
                     Profile
