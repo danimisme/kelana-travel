@@ -1,15 +1,20 @@
 .sidebar {
     height: 100vh;
     width: 250px;
-    background-color: #85c8a3;
+    background-color: #FFBB70;
     border-right: 1px solid #dee2e6;
     padding-top: 60px;
     padding-left: 10px;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: 100;
     transition: all 0.5s ease
+}
+
+.list-group-item {
+    background-color: #FFEC9E;
+    border-color: #FFBB70;
 }
 
 .hideSidebar {
@@ -28,7 +33,7 @@
     right: -40px;
     cursor: pointer;
     z-index: 100;
-    background-color: #85c8a3; 
+    background-color: #FFBB70; 
     border-radius: 10%;
     padding: 10px;
 }
