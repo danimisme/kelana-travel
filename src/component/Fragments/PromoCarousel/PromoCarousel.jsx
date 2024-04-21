@@ -1,7 +1,7 @@
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { useEffect, useState } from "react";
-import useGetData from "@/services/useGetData";
+import useGetData from "../../../hooks/useGetData";
 import { Link } from "react-router-dom";
 
 export default function PromoCarousel() {
