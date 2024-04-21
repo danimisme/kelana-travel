@@ -6,7 +6,8 @@ export default function CardPromo({ promo }) {
       <div className={`card_promo card`}>
         <img
           src={promo.imageUrl}
-          className={`card_image card-img-top`}
+          className={`card-img-top`}
+          style={{ width: "100%", aspectRatio: "5/3", objectFit: "cover" }}
           alt="..."
         />
         <div className="card-body">

@@ -3,6 +3,7 @@ import ActivityPage from "../pages/activity/ActivityPage";
 import DetailActivityPage from "../pages/detailActivity/DetailActivityPage";
 import Home from "../pages/home/home";
 import LoginPage from "../pages/login/loginPage";
+import PromoPage from "../pages/promo/PromoPage";
 
 export const routeList = [
   {
@@ -20,6 +21,10 @@ export const routeList = [
   {
     path: "activity/:id",
     element: <DetailActivityPage />,
+  },
+  {
+    path: "/promo",
+    element: <PromoPage />,
   },
 
   {
