@@ -1,5 +1,6 @@
 import moment from "moment/moment";
 import "./CardBanner.css";
+import { Link } from "react-router-dom";
 
 export default function CardBanner({ banner, index }) {
   return (
@@ -12,9 +13,11 @@ export default function CardBanner({ banner, index }) {
         />
       </div>
       <div className="button-icon-container">
-        <div className="button-icon btn-edit">
-          <i className="bi bi-pencil-square "></i>
-        </div>
+        <Link to={`/dashboard/banner/edit-banner/${banner.id}`}>
+          <div className="button-icon btn-edit">
+            <i className="bi bi-pencil-square "></i>
+          </div>
+        </Link>
         <div className="button-icon btn-delete">
           <i className="bi bi-trash-fill"></i>
         </div>
