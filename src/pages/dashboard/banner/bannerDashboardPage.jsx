@@ -27,13 +27,13 @@ export default function BannerDashboardPage() {
     <Layout>
       <div className="mt-5 container-lg">
         <div className="py-5 ">
-          <div className="d-flex justify-content-between px-3">
+          <div className="d-md-flex justify-content-between px-3">
             <h1 className="text-center text-orange">
               <i className="bi bi-image me-1"> </i>Banner Data
             </h1>
             <Link
               to="/dashboard/banner/create-banner"
-              className="text-decoration-none"
+              className="text-decoration-none d-flex justify-content-center align-items-center"
             >
               <div className=" button-create">
                 <i className="bi bi-plus-circle-fill ms-2 fs-3"></i>
