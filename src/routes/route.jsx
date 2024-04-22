@@ -3,6 +3,7 @@ import ActivityPage from "../pages/activity/ActivityPage";
 import BannerDashboardPage from "../pages/dashboard/banner/bannerDashboardPage";
 import CreateBannerPage from "../pages/dashboard/create-banner/CreateBannerPage";
 import EditBannerPage from "../pages/dashboard/edit-banner/EditBannerPage";
+import PromoDashboardPage from "../pages/dashboard/promo/PromoDashboardPage";
 import UserDashboardPage from "../pages/dashboard/user/userDashboardPage";
 import DetailActivityPage from "../pages/detailActivity/DetailActivityPage";
 import DetailPromoPage from "../pages/detailPromo/detailPromo";
@@ -55,6 +56,10 @@ export const routeList = [
       {
         path: "banner/create-banner",
         element: <CreateBannerPage />,
+      },
+      {
+        path: "promo",
+        element: <PromoDashboardPage />,
       },
     ],
   },
