@@ -1,6 +1,7 @@
 import DashboardLayout from "../layouts/DashboardLayout";
 import ActivityPage from "../pages/activity/ActivityPage";
 import BannerDashboardPage from "../pages/dashboard/banner/bannerDashboardPage";
+import CategoryDashboardPage from "../pages/dashboard/category/CategoryDashboardPage";
 import CreateBannerPage from "../pages/dashboard/create-banner/CreateBannerPage";
 import CreatePromoPage from "../pages/dashboard/create-promo/CreatePromoPage";
 import EditBannerPage from "../pages/dashboard/edit-banner/EditBannerPage";
@@ -70,6 +71,10 @@ export const routeList = [
       {
         path: "promo/create-promo",
         element: <CreatePromoPage />,
+      },
+      {
+        path: "category",
+        element: <CategoryDashboardPage />,
       },
     ],
   },
