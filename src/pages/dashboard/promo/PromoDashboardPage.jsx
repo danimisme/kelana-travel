@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Layout from "../../../layouts/Layout";
 import useGetData from "../../../hooks/useGetData";
 import { useEffect, useState } from "react";
+import CardPromo from "../../../component/Fragments/DashboardCardPromo/CardPromo";
 
 export default function PromoDashboardPage() {
   const { getData } = useGetData();
@@ -31,21 +32,7 @@ export default function PromoDashboardPage() {
           <div className="row justify-content-center">
             {promos.map((promo) => (
               <div className="col-lg-4 col-md-6 col-10 mt-3" key={promo.id}>
-                <Link
-                  to={`/dashboard/promo/${promo.id}`}
-                  className="text-decoration-none text-dark"
-                >
-                  <div className="card-promo">
-                    <img
-                      src={promo.imageUrl}
-                      alt={promo.title}
-                      className="card-img-top"
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">{promo.title}</h5>
-                    </div>
-                  </div>
-                </Link>
+                <CardPromo key={promo.id} promo={promo} />
               </div>
             ))}
           </div>
