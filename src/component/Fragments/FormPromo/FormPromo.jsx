@@ -8,13 +8,31 @@ import "./FormPromo.css";
 export default function FormPromo({ promo, onSubmit }) {
   const [file, setFile] = useState("");
   const [imagePromoUrl, setImagePromoUrl] = useState(null);
+  const [messageImage, setMessageImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState(null);
   const { upload } = useUpload();
   useEffect(() => {
     setImagePromoUrl(promo.imageUrl);
   }, [promo]);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+    const file = e.target.files[0];
+    setFile(file);
+    if (!file.type.startsWith("image/")) {
+      setMessageImage(
+        "File harus berupa gambar dengan format JPEG, PNG, GIF, BMP, atau TIFF."
+      );
+      setIsLoading(true);
+      setTimeout(() => {
+        setMessageImage(null);
+        setIsLoading(false);
+        e.target.value = null;
+      }, 3000);
+    } else {
+      setMessageImage(null);
+      setIsLoading(false);
+    }
   };
 
   const handleUpload = async (e) => {
@@ -25,9 +43,18 @@ export default function FormPromo({ promo, onSubmit }) {
       const res = await upload("upload-image", formData);
       setImagePromoUrl(res.data.url);
       console.log(res);
+      setIsLoading(false);
+      setMessageImage(null);
       return res.data.url;
     } catch (error) {
       console.log(error);
+      setMessageImage("Failed to upload image, try another image.");
+      setIsLoading(true);
+      setTimeout(() => {
+        setMessageImage(null);
+        setIsLoading(false);
+        e.target.value = null;
+      }, 3000);
     }
   };
 
@@ -42,6 +69,16 @@ export default function FormPromo({ promo, onSubmit }) {
       promo_discount_price: Number(e.target.promo_discount_price.value),
       minimum_claim_price: Number(e.target.minimum_claim_price.value),
     };
+
+    for (const key in promoData) {
+      if (!promoData[key]) {
+        setMessage("Failed to create promo, all fields are required");
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+        return;
+      }
+    }
 
     onSubmit(promoData);
   };
@@ -136,18 +173,47 @@ export default function FormPromo({ promo, onSubmit }) {
                   id="imageUrl"
                   onChange={handleFileChange}
                 />
+                {messageImage && (
+                  <div className="alert alert-danger d-flex justify-content-center align-items-center mt-3">
+                    <div
+                      className="spinner-border text-danger me-2"
+                      role="status"
+                    >
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                    {messageImage}
+                  </div>
+                )}
                 <button
                   className="default-button mt-2"
                   type="button"
                   onClick={handleUpload}
+                  disabled={isLoading}
                   style={{ backgroundColor: "green" }}
                 >
                   Upload Image
                 </button>
               </div>
             </div>
-            <div className="d-flex justify-content-center mt-5">
-              <button type="submit" className="default-button btn-orange">
+            {message && (
+              <>
+                <div className="alert alert-danger d-flex justify-content-center align-items-center">
+                  <div
+                    className="spinner-border text-danger me-2"
+                    role="status"
+                  >
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                  {message}
+                </div>
+              </>
+            )}
+            <div className="d-flex justify-content-center mt-3">
+              <button
+                type="submit"
+                className="default-button btn-orange"
+                disabled={isLoading}
+              >
                 {promo.id ? "Update Promo" : "Create Promo"}
               </button>
               <Link to="/dashboard/promo">
