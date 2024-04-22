@@ -17,9 +17,8 @@ export default function CardUser({ user, index }) {
         className={`card-body r d-flex flex-column gap-2 ${bgBody}`}
         style={{ borderRadius: "10px 10px 0 0" }}
       >
-        <p className="card-text fw-semibold fs-4 border-2 border-bottom m-0 ">
-          {user.name}
-        </p>
+        <p className="card-text fw-semibold fs-4 border-2 m-0 ">{user.name}</p>
+        <hr className={`${bgBody} p-0 m-0`} />
         <p className="card-text m-0 p-0 small">
           <i className="bi bi-envelope-fill me-1"></i>
           {user.email}
