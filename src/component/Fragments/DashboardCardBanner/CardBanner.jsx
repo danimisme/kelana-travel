@@ -11,6 +11,12 @@ export default function CardBanner({ banner, index }) {
           style={{ width: "100%", aspectRatio: "5/3", objectFit: "cover" }}
         />
       </div>
+      <div className="btn-edit">
+        <i className="bi bi-pencil-square "></i>
+      </div>
+      <div className="btn-delete">
+        <i className="bi bi-trash-fill"></i>
+      </div>
       <div
         className="card-body text-white p-3"
         style={{ backgroundColor: "#8B322C" }}
