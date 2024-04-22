@@ -1,6 +1,6 @@
 import moment from "moment/moment";
 import { Link } from "react-router-dom";
-
+import "./CardCategory.css";
 export default function CardCategory({ category, handleDelete }) {
   return (
     <div className="card card-category m-3 rounded">
