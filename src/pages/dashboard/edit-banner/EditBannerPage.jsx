@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useGetData from "../../../hooks/useGetData";
 import useUpdate from "../../../hooks/useUpdate";
 import Layout from "../../../layouts/Layout";
@@ -9,6 +9,7 @@ export default function EditBannerPage() {
   const { getData } = useGetData();
   const [banner, setBanner] = useState({});
   const { update } = useUpdate();
+  const navigate = useNavigate();
 
   const params = useParams();
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function EditBannerPage() {
   const handleUpdateBanner = async (data) => {
     try {
       await update(`update-banner/${params.id}`, data);
-      window.location.reload();
+      navigate("/dashboard/banner");
     } catch (error) {
       console.log(error);
     }
