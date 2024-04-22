@@ -5,6 +5,7 @@ import CategoryDashboardPage from "../pages/dashboard/category/CategoryDashboard
 import CreateBannerPage from "../pages/dashboard/create-banner/CreateBannerPage";
 import CreatePromoPage from "../pages/dashboard/create-promo/CreatePromoPage";
 import EditBannerPage from "../pages/dashboard/edit-banner/EditBannerPage";
+import EditCategoryPage from "../pages/dashboard/edit-category/EditCategoryPage";
 import EditPromoPage from "../pages/dashboard/edit-promo/EditPromoPage";
 import PromoDashboardPage from "../pages/dashboard/promo/PromoDashboardPage";
 import UserDashboardPage from "../pages/dashboard/user/userDashboardPage";
@@ -75,6 +76,10 @@ export const routeList = [
       {
         path: "category",
         element: <CategoryDashboardPage />,
+      },
+      {
+        path: "category/edit-category/:id",
+        element: <EditCategoryPage />,
       },
     ],
   },
