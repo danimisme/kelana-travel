@@ -4,9 +4,23 @@ import { useEffect, useState } from "react";
 import CardBanner from "../../../component/Fragments/DashboardCardBanner/CardBanner";
 import "./bannerDashboardPage.css";
 import { Link } from "react-router-dom";
+import useDelete from "../../../hooks/useDelete";
 export default function BannerDashboardPage() {
   const { getData } = useGetData();
   const [banners, setBanners] = useState([]);
+  const { deleteData } = useDelete();
+
+  const handleDelete = async (id) => {
+    try {
+      const res = await deleteData(`delete-banner/${id}`);
+      if (res.status === 200) {
+        getData("banners").then((res) => setBanners(res.data.data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getData("banners").then((res) => setBanners(res.data.data));
   }, []);
@@ -29,7 +43,11 @@ export default function BannerDashboardPage() {
           <div className="row justify-content-center">
             {banners.map((banner, index) => (
               <div className="col-10 col-md-6 col-lg-4 my-3" key={banner.id}>
-                <CardBanner banner={banner} index={index} />
+                <CardBanner
+                  banner={banner}
+                  index={index}
+                  handleDelete={handleDelete}
+                />
               </div>
             ))}
           </div>
