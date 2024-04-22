@@ -22,6 +22,7 @@ export default function CategoryDashboardPage() {
       console.log(error);
     }
   };
+
   return (
     <Layout>
       <div className="mt-5 container-lg">
