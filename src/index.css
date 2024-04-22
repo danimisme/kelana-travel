@@ -10,13 +10,35 @@ body {
     background-color: #ED9455;
 }
 
+.default-button {
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.3s ease;
+}
+
+.default-button:hover {
+    box-shadow: none;
+    translate: 0 2px;
+}
+
+.btn-gray {
+    background-color: #D0D0D0;
+    color: #343434;
+}
+
+
+
 .btn-orange {
     background-color: #ED9455;
     color: white;
 }
 
-.btn-orange:hover {
+/* .btn-orange:hover {
     background-color: white;
     color: #ED9455;
     border: 1px solid #ED9455;
-}
+} */
