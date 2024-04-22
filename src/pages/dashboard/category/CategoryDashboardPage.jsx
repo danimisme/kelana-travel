@@ -3,12 +3,25 @@ import Layout from "../../../layouts/Layout";
 import useGetData from "../../../hooks/useGetData";
 import { useEffect, useState } from "react";
 import CardCategory from "../../../component/Fragments/DashboardCardCategory/CardCategory";
+import useDelete from "../../../hooks/useDelete";
 export default function CategoryDashboardPage() {
   const { getData } = useGetData();
   const [categories, setCategories] = useState([]);
+  const { deleteData } = useDelete();
   useEffect(() => {
     getData("categories").then((res) => setCategories(res.data.data));
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      const res = await deleteData(`delete-category/${id}`);
+      if (res.status === 200) {
+        getData("categories").then((res) => setCategories(res.data.data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Layout>
       <div className="mt-5 container-lg">
@@ -30,7 +43,7 @@ export default function CategoryDashboardPage() {
           <div className="row justify-content-center">
             {categories.map((category) => (
               <div className="col-10 col-md-6 col-lg-4 my-3" key={category.id}>
-                <CardCategory category={category} />
+                <CardCategory category={category} handleDelete={handleDelete} />
               </div>
             ))}
           </div>
