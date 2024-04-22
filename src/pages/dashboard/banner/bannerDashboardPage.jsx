@@ -2,7 +2,6 @@ import Layout from "../../../layouts/Layout";
 import useGetData from "../../../hooks/useGetData";
 import { useEffect, useState } from "react";
 import CardBanner from "../../../component/Fragments/DashboardCardBanner/CardBanner";
-import "./bannerDashboardPage.css";
 import { Link } from "react-router-dom";
 import useDelete from "../../../hooks/useDelete";
 export default function BannerDashboardPage() {
@@ -29,7 +28,9 @@ export default function BannerDashboardPage() {
       <div className="mt-5 container-lg">
         <div className="py-5 ">
           <div className="d-flex justify-content-between px-3">
-            <h1 className="text-center text-orange">Banner Data</h1>
+            <h1 className="text-center text-orange">
+              <i className="bi bi-image me-1"> </i>Banner Data
+            </h1>
             <Link
               to="/dashboard/banner/create-banner"
               className="text-decoration-none"
