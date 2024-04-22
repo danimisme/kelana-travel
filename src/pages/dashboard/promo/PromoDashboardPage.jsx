@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
 import Layout from "../../../layouts/Layout";
+import useGetData from "../../../hooks/useGetData";
+import { useEffect, useState } from "react";
 
 export default function PromoDashboardPage() {
+  const { getData } = useGetData();
+  const [promos, setPromos] = useState([]);
+  useEffect(() => {
+    getData("promos").then((res) => setPromos(res.data.data));
+  }, []);
+
+  console.log(promos);
   return (
     <Layout>
       <div className="mt-5 container-lg">
