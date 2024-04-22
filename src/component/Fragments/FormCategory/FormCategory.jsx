@@ -3,6 +3,7 @@ import Input from "../../../component/Elements/input/Input";
 import { useEffect, useState } from "react";
 import useUpload from "../../../hooks/useUpload";
 import { Link } from "react-router-dom";
+import "./FormCategory.css";
 
 export default function FormCategory({ category, onSubmit }) {
   const [isLoading, setIsLoading] = useState(false);
