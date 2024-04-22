@@ -2,7 +2,7 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import "./CardPromo.css";
 
-export default function CardPromo({ promo }) {
+export default function CardPromo({ promo, handleDelete }) {
   return (
     <div className="card card-promo m-3 rounded">
       <div className="card-img-top">
@@ -18,7 +18,10 @@ export default function CardPromo({ promo }) {
             <i className="bi bi-pencil-square "></i>
           </div>
         </Link>
-        <div className="button-icon btn-delete">
+        <div
+          className="button-icon btn-delete"
+          onClick={() => handleDelete(promo.id)}
+        >
           <i className="bi bi-trash-fill"></i>
         </div>
       </div>
