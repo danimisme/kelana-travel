@@ -59,17 +59,19 @@ export default function FormBanner({ banner, onSubmit }) {
           <h3 className="mb-3 text-center fw-bold">
             {banner ? "Edit Banner" : "Create Banner"}
           </h3>
-          <div className="my-3">
-            <img
-              src={bannerImageUrl}
-              alt={banner?.title}
-              style={{
-                width: "100%",
-                aspectRatio: "6/3",
-                objectFit: "cover",
-              }}
-            />
-          </div>
+          {bannerImageUrl && (
+            <div className="mb-3">
+              <img
+                src={bannerImageUrl}
+                alt="Banner"
+                style={{
+                  width: "100%",
+                  aspectRatio: "5/3",
+                  objectFit: "cover",
+                }}
+              />
+            </div>
+          )}
           <div className="mb-3">
             <Label htmlFor="name" className="form-label">
               Banner Name
@@ -79,6 +81,7 @@ export default function FormBanner({ banner, onSubmit }) {
               className="form-control"
               id="name"
               defaultValue={banner?.name}
+              placeholder="Input Banner Name"
             />
           </div>
           <div className="mb-3">
