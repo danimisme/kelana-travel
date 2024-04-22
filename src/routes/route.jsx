@@ -1,5 +1,6 @@
 import DashboardLayout from "../layouts/DashboardLayout";
 import ActivityPage from "../pages/activity/ActivityPage";
+import BannerDashboardPage from "../pages/dashboard/banner/bannerDashboardPage";
 import UserDashboardPage from "../pages/dashboard/user/userDashboardPage";
 import DetailActivityPage from "../pages/detailActivity/DetailActivityPage";
 import DetailPromoPage from "../pages/detailPromo/detailPromo";
@@ -40,6 +41,10 @@ export const routeList = [
       {
         path: "user",
         element: <UserDashboardPage />,
+      },
+      {
+        path: "banner",
+        element: <BannerDashboardPage />,
       },
     ],
   },
