@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useGetData from "../../../hooks/useGetData";
 import useUpdate from "../../../hooks/useUpdate";
@@ -8,6 +8,8 @@ import FormPromo from "../../../component/Fragments/FormPromo/FormPromo";
 export default function EditPromoPage() {
   const { getData } = useGetData();
   const [promo, setPromo] = useState({});
+
+  const navigate = useNavigate();
 
   const { update } = useUpdate();
   const params = useParams();
@@ -19,7 +21,7 @@ export default function EditPromoPage() {
     try {
       const res = await update(`update-promo/${params.id}`, data);
       if (res.status === 200) {
-        window.location.reload();
+        navigate("/dashboard/promo");
       }
     } catch (error) {
       console.log(error);
