@@ -1,6 +1,7 @@
 import DashboardLayout from "../layouts/DashboardLayout";
 import ActivityPage from "../pages/activity/ActivityPage";
 import BannerDashboardPage from "../pages/dashboard/banner/bannerDashboardPage";
+import CreateBannerPage from "../pages/dashboard/create-banner/CreateBannerPage";
 import EditBannerPage from "../pages/dashboard/edit-banner/EditBannerPage";
 import UserDashboardPage from "../pages/dashboard/user/userDashboardPage";
 import DetailActivityPage from "../pages/detailActivity/DetailActivityPage";
@@ -50,6 +51,10 @@ export const routeList = [
       {
         path: "banner/edit-banner/:id",
         element: <EditBannerPage />,
+      },
+      {
+        path: "banner/create-banner",
+        element: <CreateBannerPage />,
       },
     ],
   },
