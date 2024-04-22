@@ -2,7 +2,7 @@ import moment from "moment/moment";
 import "./CardBanner.css";
 import { Link } from "react-router-dom";
 
-export default function CardBanner({ banner, index }) {
+export default function CardBanner({ banner, index, handleDelete }) {
   return (
     <div className="card card-banner m-3 rounded">
       <div className="card-img-top">
@@ -18,7 +18,10 @@ export default function CardBanner({ banner, index }) {
             <i className="bi bi-pencil-square "></i>
           </div>
         </Link>
-        <div className="button-icon btn-delete">
+        <div
+          className="button-icon btn-delete"
+          onClick={() => handleDelete(banner.id)}
+        >
           <i className="bi bi-trash-fill"></i>
         </div>
       </div>
