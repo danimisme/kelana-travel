@@ -56,7 +56,9 @@ export default function FormBanner({ banner, onSubmit }) {
     <div className="col-lg-6 col-10 mx-auto">
       <div className="form_banner_container">
         <form onSubmit={handleSubmit}>
-          <h1 className="mb-3 text-center">Edit Banner</h1>
+          <h3 className="mb-3 text-center fw-bold">
+            {banner ? "Edit Banner" : "Create Banner"}
+          </h3>
           <div className="my-3">
             <img
               src={bannerImageUrl}
@@ -86,11 +88,11 @@ export default function FormBanner({ banner, onSubmit }) {
             <Input type="file" onChange={handleFileChange} id="image" />
           </div>
           {message && <p className="text-danger">{message}</p>}
-          <button className="btn btn-success" disabled={isLoading}>
-            Edit
+          <button className="default-button btn-orange" disabled={isLoading}>
+            {banner ? "Edit Banner" : "Create Banner"}
           </button>
           <Link to="/dashboard/banner">
-            <button className="btn btn-secondary ms-2">Back</button>
+            <button className="default-button btn-gray ms-2">Back</button>
           </Link>
         </form>
       </div>
