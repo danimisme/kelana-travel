@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import Layout from "../../../layouts/Layout";
+import useGetData from "../../../hooks/useGetData";
+import { useEffect, useState } from "react";
 export default function CategoryDashboardPage() {
+  const { getData } = useGetData();
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    getData("categories").then((res) => setCategories(res.data.data));
+  }, []);
+  console.log(categories);
   return (
     <Layout>
       <div className="mt-5 container-lg">
