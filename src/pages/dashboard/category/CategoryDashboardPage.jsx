@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import Layout from "../../../layouts/Layout";
 import useGetData from "../../../hooks/useGetData";
 import { useEffect, useState } from "react";
+import CardCategory from "../../../component/Fragments/DashboardCardCategory/CardCategory";
 export default function CategoryDashboardPage() {
   const { getData } = useGetData();
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     getData("categories").then((res) => setCategories(res.data.data));
   }, []);
-  console.log(categories);
   return (
     <Layout>
       <div className="mt-5 container-lg">
@@ -27,7 +27,13 @@ export default function CategoryDashboardPage() {
               </div>
             </Link>
           </div>
-          <div className="row justify-content-center"></div>
+          <div className="row justify-content-center">
+            {categories.map((category) => (
+              <div className="col-10 col-md-6 col-lg-4 my-3" key={category.id}>
+                <CardCategory category={category} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Layout>
