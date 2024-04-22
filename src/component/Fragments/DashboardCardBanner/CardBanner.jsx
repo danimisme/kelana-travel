@@ -1,21 +1,23 @@
 import moment from "moment/moment";
+import "./CardBanner.css";
 
 export default function CardBanner({ banner, index }) {
-  console.log(banner);
   return (
-    <div className="card card-banner m-3">
-      <div>
+    <div className="card card-banner m-3 rounded">
+      <div className="card-img-top">
         <img
           src={banner.imageUrl}
           alt=""
           style={{ width: "100%", aspectRatio: "5/3", objectFit: "cover" }}
         />
       </div>
-      <div className="btn-edit">
-        <i className="bi bi-pencil-square "></i>
-      </div>
-      <div className="btn-delete">
-        <i className="bi bi-trash-fill"></i>
+      <div className="button-icon-container">
+        <div className="button-icon btn-edit">
+          <i className="bi bi-pencil-square "></i>
+        </div>
+        <div className="button-icon btn-delete">
+          <i className="bi bi-trash-fill"></i>
+        </div>
       </div>
       <div
         className="card-body text-white p-3"
