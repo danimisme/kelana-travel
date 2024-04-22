@@ -13,7 +13,7 @@ export default function FormPromo({ promo, onSubmit }) {
   const [message, setMessage] = useState(null);
   const { upload } = useUpload();
   useEffect(() => {
-    setImagePromoUrl(promo.imageUrl);
+    setImagePromoUrl(promo?.imageUrl);
   }, [promo]);
 
   const handleFileChange = (e) => {
@@ -89,7 +89,7 @@ export default function FormPromo({ promo, onSubmit }) {
         <form onSubmit={handleSubmit}>
           <div className="row py-5 px-md-5 px-0">
             <h1 className="text-center mb-3 text-orange">
-              {promo.id ? "Edit Promo" : "Create Promo"}
+              {promo?.id ? "Edit Promo" : "Create Promo"}
             </h1>
             <div className="col-lg-6 col-10 mx-auto">
               <div className="mb-3">
@@ -99,7 +99,7 @@ export default function FormPromo({ promo, onSubmit }) {
                 <Input
                   className="form-control"
                   id="title"
-                  defaultValue={promo.title}
+                  defaultValue={promo?.title}
                 />
               </div>
               <div className="mb-3">
@@ -110,7 +110,7 @@ export default function FormPromo({ promo, onSubmit }) {
                   className="form-control"
                   id="description"
                   rows="3"
-                  defaultValue={promo.description}
+                  defaultValue={promo?.description}
                 ></textarea>
               </div>
               <div className="mb-3">
@@ -120,7 +120,7 @@ export default function FormPromo({ promo, onSubmit }) {
                 <Input
                   className="form-control"
                   id="promo_code"
-                  defaultValue={promo.promo_code}
+                  defaultValue={promo?.promo_code}
                 />
               </div>
               <div className="mb-3">
@@ -131,7 +131,7 @@ export default function FormPromo({ promo, onSubmit }) {
                   type="number"
                   className="form-control"
                   id="minimum_claim_price"
-                  defaultValue={promo.minimum_claim_price}
+                  defaultValue={promo?.minimum_claim_price}
                 />
               </div>
               <div className="mb-3">
@@ -140,7 +140,7 @@ export default function FormPromo({ promo, onSubmit }) {
                 </Label>
                 <Input
                   id="terms_condition"
-                  defaultValue={promo.terms_condition}
+                  defaultValue={promo?.terms_condition}
                 />
               </div>
               <div className="mb-3">
@@ -151,7 +151,7 @@ export default function FormPromo({ promo, onSubmit }) {
                   type="number"
                   className="form-control"
                   id="promo_discount_price"
-                  defaultValue={promo.promo_discount_price}
+                  defaultValue={promo?.promo_discount_price}
                 />
               </div>
             </div>
@@ -159,7 +159,7 @@ export default function FormPromo({ promo, onSubmit }) {
               {imagePromoUrl && (
                 <img
                   src={imagePromoUrl}
-                  alt={promo.title}
+                  alt={promo?.title}
                   className="img-fluid mt-3 rounded"
                 />
               )}
@@ -214,7 +214,7 @@ export default function FormPromo({ promo, onSubmit }) {
                 className="default-button btn-orange"
                 disabled={isLoading}
               >
-                {promo.id ? "Update Promo" : "Create Promo"}
+                {promo?.id ? "Update Promo" : "Create Promo"}
               </button>
               <Link to="/dashboard/promo">
                 <button
