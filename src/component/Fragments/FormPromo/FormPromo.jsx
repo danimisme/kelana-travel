@@ -100,6 +100,7 @@ export default function FormPromo({ promo, onSubmit }) {
                   className="form-control"
                   id="title"
                   defaultValue={promo?.title}
+                  placeholder="Example: Promo Hiking Family"
                 />
               </div>
               <div className="mb-3">
@@ -111,6 +112,7 @@ export default function FormPromo({ promo, onSubmit }) {
                   id="description"
                   rows="3"
                   defaultValue={promo?.description}
+                  placeholder="Describe the promo trip"
                 ></textarea>
               </div>
               <div className="mb-3">
@@ -121,6 +123,7 @@ export default function FormPromo({ promo, onSubmit }) {
                   className="form-control"
                   id="promo_code"
                   defaultValue={promo?.promo_code}
+                  placeholder="Example: HIKINGFAMILY"
                 />
               </div>
               <div className="mb-3">
@@ -132,6 +135,7 @@ export default function FormPromo({ promo, onSubmit }) {
                   className="form-control"
                   id="minimum_claim_price"
                   defaultValue={promo?.minimum_claim_price}
+                  placeholder="Example: 50000"
                 />
               </div>
               <div className="mb-3">
@@ -141,6 +145,7 @@ export default function FormPromo({ promo, onSubmit }) {
                 <Input
                   id="terms_condition"
                   defaultValue={promo?.terms_condition}
+                  placeholder="Please give the terms and conditions"
                 />
               </div>
               <div className="mb-3">
@@ -152,6 +157,7 @@ export default function FormPromo({ promo, onSubmit }) {
                   className="form-control"
                   id="promo_discount_price"
                   defaultValue={promo?.promo_discount_price}
+                  placeholder="Example: 50000"
                 />
               </div>
             </div>
