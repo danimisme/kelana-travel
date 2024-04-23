@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import useGetData from "../../../hooks/useGetData";
 import useUpdate from "../../../hooks/useUpdate";
 import FormActivity from "../../../component/Fragments/FormActivity/FormActivity";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../../layouts/Layout";
 
 export default function EditActivityPage() {
@@ -10,6 +10,7 @@ export default function EditActivityPage() {
   const { getData } = useGetData();
   const { update } = useUpdate();
   const params = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
     getData(`activity/${params.id}`).then((res) => {
       setActivity(res.data.data);
@@ -20,7 +21,7 @@ export default function EditActivityPage() {
     try {
       const res = await update(`update-activity/${params.id}`, data);
       if (res.status === 200) {
-        window.location.reload();
+        navigate("/dashboard/activity");
       }
     } catch (error) {
       console.log(error);
