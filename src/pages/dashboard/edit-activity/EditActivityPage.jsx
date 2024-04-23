@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import useGetData from "../../../hooks/useGetData";
 import useUpdate from "../../../hooks/useUpdate";
 import FormActivity from "../../../component/Fragments/FormActivity/FormActivity";
+import { useParams } from "react-router-dom";
 
-export default function EditActivityPage({ params }) {
+export default function EditActivityPage() {
   const [activity, setActivity] = useState({});
   const { getData } = useGetData();
   const { update } = useUpdate();
+  const params = useParams();
   useEffect(() => {
     getData(`activity/${params.id}`).then((res) => {
       setActivity(res.data.data);
