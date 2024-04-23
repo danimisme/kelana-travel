@@ -31,3 +31,10 @@
     border: 3px solid #9EA9F0;
 }
 
+.bg_admin {
+    background-color: #9DBC98;
+}
+
+.bg_user {
+    background-color: #FFBB64;
+}
