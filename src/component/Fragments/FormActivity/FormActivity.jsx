@@ -8,6 +8,9 @@ import "./FormActivity.css";
 import useGetData from "../../../hooks/useGetData";
 
 export default function FormActivity({ activity, onSubmit }) {
+  const [file, setFile] = useState(null);
+  const [isLoadingImage, setIsLoadingImage] = useState(false);
+  const { upload } = useUpload();
   const { getData } = useGetData();
   const [categories, setCategories] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
@@ -24,6 +27,43 @@ export default function FormActivity({ activity, onSubmit }) {
       setImageUrls(activity.imageUrls);
     }
   }, [activity]);
+
+  const handleRemoveImage = (index) => {
+    const newImageUrls = [...imageUrls];
+    newImageUrls.splice(index, 1);
+    setImageUrls(newImageUrls);
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFile(file);
+    if (!file.type.startsWith("image/")) {
+      setMassageImage(
+        "File harus berupa gambar dengan format JPEG, PNG, GIF, BMP, atau TIFF"
+      );
+    }
+  };
+
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    setIsLoadingImage(true);
+    if (!file) {
+      setMassageImage("Please select an image file");
+      return;
+    }
+    const formData = new FormData();
+    formData.append("image", file);
+    try {
+      const res = await upload("upload-image", formData);
+      setImageUrls([...imageUrls, res.data.url]);
+      setIsLoadingImage(false);
+      setMassageImage(null);
+      return res.data.url;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="row py-5">
