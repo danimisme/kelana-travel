@@ -5,6 +5,7 @@ import useUpload from "../../../hooks/useUpload";
 import { Link } from "react-router-dom";
 import useGetData from "../../../hooks/useGetData";
 import SelectOption from "../../Elements/SelectOption/SelectOption";
+import "./FormActivity.css";
 
 export default function FormActivity({ activity, onSubmit }) {
   const [file, setFile] = useState(null);
