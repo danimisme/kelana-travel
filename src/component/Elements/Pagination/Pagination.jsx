@@ -4,6 +4,23 @@ const Pagination = ({ page, pages, setPage }) => {
     pageNumbers.push(i);
   }
 
+  let startPage, endPage;
+  if (pages <= 5) {
+    startPage = 1;
+    endPage = pages;
+  } else {
+    if (page <= 3) {
+      startPage = 1;
+      endPage = 5;
+    } else if (page + 1 >= pages) {
+      startPage = pages - 4;
+      endPage = pages;
+    } else {
+      startPage = page - 2;
+      endPage = page + 2;
+    }
+  }
+
   const previousPage = () => {
     if (page > 1) {
       setPage(page - 1);
@@ -16,37 +33,53 @@ const Pagination = ({ page, pages, setPage }) => {
     }
   };
 
+  const firstPage = () => {
+    setPage(1);
+  };
+
+  const lastPage = () => {
+    setPage(pages);
+  };
+
   return (
     <nav aria-label="pagination" className="mt-3">
       <ul className="pagination">
+        <li
+          className={`page-item ${page === 1 && "disabled"}   `}
+          onClick={() => firstPage()}
+        >
+          <p className={`page-link `}>First</p>
+        </li>
         <li
           className={`page-item ${page === 1 && "disabled"}  `}
           onClick={() => previousPage()}
         >
           <p className={`page-link `}>Previous</p>
         </li>
-        {pageNumbers.map((number) => (
+        {pageNumbers.slice(startPage - 1, endPage).map((number) => (
           <li
             key={number}
-            className={` ${
+            className={`page-item ${page === number && "active"} ${
               page !== number - 1 &&
               page !== number &&
               page !== number + 1 &&
               "d-none d-md-block"
-            }  page-item`}
+            } `}
+            onClick={() => setPage(number)}
           >
-            <p
-              className={`page-link ${page === number && "active"} `}
-              onClick={() => setPage(number)}
-            >
-              {number}
-            </p>
+            <p className="page-link">{number}</p>
           </li>
         ))}
         <li className={`page-item ${page === pages && "disabled"} `}>
           <p className={`page-link `} onClick={() => nextPage()}>
             Next
           </p>
+        </li>
+        <li
+          className={`page-item ${page === pages && "disabled"}  `}
+          onClick={() => lastPage()}
+        >
+          <p className={`page-link `}>Last</p>
         </li>
       </ul>
     </nav>
