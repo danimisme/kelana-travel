@@ -4,11 +4,17 @@ import useGetData from "../../../hooks/useGetData";
 import { useEffect, useState } from "react";
 import CardActivity from "../../../component/Fragments/DashboardCardActivity/CardActivity";
 import useDelete from "../../../hooks/useDelete";
+import Pagination from "../../../component/Elements/Pagination/Pagination";
 
 export default function ActivityDashboardPage() {
   const { getData } = useGetData();
   const [activities, setActivities] = useState([]);
   const { deleteData } = useDelete();
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 6;
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const totalPages = Math.ceil(activities.length / itemsPerPage);
 
   useEffect(() => {
     getData("activities").then((res) => setActivities(res.data.data));
@@ -25,7 +31,6 @@ export default function ActivityDashboardPage() {
     }
   };
 
-  console.log(activities);
   return (
     <Layout>
       <div className="container-lg mt-5">
@@ -48,12 +53,13 @@ export default function ActivityDashboardPage() {
             </Link>
           </div>
           <div className="row justify-content-center">
-            {activities.map((activity) => (
+            {activities.slice(startIndex, endIndex).map((activity) => (
               <div className="col-lg-4 col-md-6 col-10 mt-3" key={activity.id}>
                 <CardActivity activity={activity} handleDelete={handleDelete} />
               </div>
             ))}
           </div>
+          <Pagination page={page} setPage={setPage} pages={totalPages} />
         </div>
       </div>
     </Layout>
