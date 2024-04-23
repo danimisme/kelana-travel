@@ -4,10 +4,16 @@ import useGetData from "../../../hooks/useGetData";
 import { useEffect, useState } from "react";
 import CardCategory from "../../../component/Fragments/DashboardCardCategory/CardCategory";
 import useDelete from "../../../hooks/useDelete";
+import Pagination from "../../../component/Elements/Pagination/Pagination";
 export default function CategoryDashboardPage() {
   const { getData } = useGetData();
   const [categories, setCategories] = useState([]);
   const { deleteData } = useDelete();
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 6;
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const totalPages = Math.ceil(categories.length / itemsPerPage);
   useEffect(() => {
     getData("categories").then((res) => setCategories(res.data.data));
   }, []);
@@ -29,7 +35,7 @@ export default function CategoryDashboardPage() {
         <div className="py-5 ">
           <div className="d-md-flex justify-content-between px-3">
             <h1 className="text-center " style={{ color: "#FF6000" }}>
-              <i className="bi bi-image me-1"> </i>Category Data
+              <i className="bi bi-tags-fill me-1"></i>Category Data
             </h1>
             <Link
               to="/dashboard/category/create-category"
@@ -42,12 +48,13 @@ export default function CategoryDashboardPage() {
             </Link>
           </div>
           <div className="row justify-content-center">
-            {categories.map((category) => (
+            {categories.slice(startIndex, endIndex).map((category) => (
               <div className="col-10 col-md-6 col-lg-4 my-3" key={category.id}>
                 <CardCategory category={category} handleDelete={handleDelete} />
               </div>
             ))}
           </div>
+          <Pagination page={page} setPage={setPage} pages={totalPages} />
         </div>
       </div>
     </Layout>
