@@ -3,6 +3,7 @@ import ActivityPage from "../pages/activity/ActivityPage";
 import ActivityDashboardPage from "../pages/dashboard/activity/ActivityDashboardPage";
 import BannerDashboardPage from "../pages/dashboard/banner/bannerDashboardPage";
 import CategoryDashboardPage from "../pages/dashboard/category/CategoryDashboardPage";
+import CreateActivityPage from "../pages/dashboard/create-activity/CreateActivityPage";
 import CreateBannerPage from "../pages/dashboard/create-banner/CreateBannerPage";
 import CreateCategoryPage from "../pages/dashboard/create-category/CreateCategoryPage";
 import CreatePromoPage from "../pages/dashboard/create-promo/CreatePromoPage";
@@ -95,6 +96,10 @@ export const routeList = [
       {
         path: "activity/edit-activity/:id",
         element: <EditActivityPage />,
+      },
+      {
+        path: "activity/create-activity",
+        element: <CreateActivityPage />,
       },
     ],
   },
