@@ -226,7 +226,7 @@ export default function FormActivity({ activity, onSubmit }) {
                 >
                   {activity ? "Update Activity" : "Create Activity"}
                 </button>
-                <Link href={`/dashboard/activity`}>
+                <Link to={`/dashboard/activity`}>
                   <button
                     className="default-button"
                     style={{ backgroundColor: "red" }}
