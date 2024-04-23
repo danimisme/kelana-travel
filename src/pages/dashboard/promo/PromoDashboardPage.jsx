@@ -4,11 +4,17 @@ import useGetData from "../../../hooks/useGetData";
 import { useEffect, useState } from "react";
 import CardPromo from "../../../component/Fragments/DashboardCardPromo/CardPromo";
 import useDelete from "../../../hooks/useDelete";
+import Pagination from "../../../component/Elements/Pagination/Pagination";
 
 export default function PromoDashboardPage() {
   const { getData } = useGetData();
   const [promos, setPromos] = useState([]);
   const { deleteData } = useDelete();
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 6;
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const totalPages = Math.ceil(promos.length / itemsPerPage);
 
   const handleDelete = async (id) => {
     try {
@@ -43,7 +49,7 @@ export default function PromoDashboardPage() {
             </Link>
           </div>
           <div className="row justify-content-center">
-            {promos.map((promo) => (
+            {promos.slice(startIndex, endIndex).map((promo) => (
               <div className="col-lg-4 col-md-6 col-10 mt-3" key={promo.id}>
                 <CardPromo
                   key={promo.id}
@@ -53,6 +59,7 @@ export default function PromoDashboardPage() {
               </div>
             ))}
           </div>
+          <Pagination pages={totalPages} page={page} setPage={setPage} />
         </div>
       </div>
     </Layout>
