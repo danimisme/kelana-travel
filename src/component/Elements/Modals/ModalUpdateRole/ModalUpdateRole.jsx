@@ -1,8 +1,19 @@
 import { closeModalUpdateRole } from "../../../../redux/slice/ModalUpdateRoleSlice";
 import { useDispatch, useSelector } from "react-redux";
-export default function ModalUpdateRole({ user }) {
+export default function ModalUpdateRole({ user, onConfirm }) {
   const isOpen = useSelector((state) => state.modalUpdateRole.isOpen);
   const dispatch = useDispatch();
+
+  const handleConfirm = () => {
+    const selectValue = document.getElementById("select-role").value;
+    const role = {
+      role: selectValue,
+    };
+
+    onConfirm(user.id, role);
+    dispatch(closeModalUpdateRole());
+  };
+
   return (
     <div
       className={`modal_container ${isOpen ? "show_modal" : " hide_modal"} row`}
@@ -32,7 +43,7 @@ export default function ModalUpdateRole({ user }) {
             </div>
             <div className="ms-3 w-100">
               <h4>{user.name}</h4>
-              <select className="form-select">
+              <select className="form-select" id="select-role">
                 <option value="user" selected={user.role === "user"}>
                   User
                 </option>
@@ -44,7 +55,12 @@ export default function ModalUpdateRole({ user }) {
           </div>
         </div>
         <div className="modal_footer d-flex gap-3 mt-3 justify-content-center">
-          <button className="default-button btn-orange ">Confirm</button>
+          <button
+            className="default-button btn-orange "
+            onClick={handleConfirm}
+          >
+            Confirm
+          </button>
           <button
             className="default-button"
             style={{ backgroundColor: "red" }}
