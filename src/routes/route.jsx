@@ -1,5 +1,6 @@
 import DashboardLayout from "../layouts/DashboardLayout";
 import ActivityPage from "../pages/activity/ActivityPage";
+import ActivityDashboardPage from "../pages/dashboard/activity/ActivityDashboardPage";
 import BannerDashboardPage from "../pages/dashboard/banner/bannerDashboardPage";
 import CategoryDashboardPage from "../pages/dashboard/category/CategoryDashboardPage";
 import CreateBannerPage from "../pages/dashboard/create-banner/CreateBannerPage";
@@ -85,6 +86,10 @@ export const routeList = [
       {
         path: "category/create-category",
         element: <CreateCategoryPage />,
+      },
+      {
+        path: "activity",
+        element: <ActivityDashboardPage />,
       },
     ],
   },
