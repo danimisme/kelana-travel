@@ -1,5 +1,5 @@
 import "./CardUser.css";
-export default function CardUser({ user, index }) {
+export default function CardUser({ user, index, handleUpdateRole }) {
   const bg = index % 3 === 0 ? "bg1" : index % 3 === 1 ? "bg2" : "bg3";
   const bgBody =
     index % 3 === 0 ? "bg-body1" : index % 3 === 1 ? "bg-body2" : "bg-body3";
@@ -31,6 +31,14 @@ export default function CardUser({ user, index }) {
           <i className="bi bi-gear-fill me-1"></i>
           {user.role}
         </p>
+      </div>
+      <div className="button-icon-container">
+        <div
+          className="button-icon btn-edit "
+          onClick={() => handleUpdateRole(user)}
+        >
+          <i className="bi bi-pencil-square "></i>
+        </div>
       </div>
     </div>
   );
