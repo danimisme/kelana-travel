@@ -1,5 +1,6 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
+import "./CardActiviry.css";
 
 export default function CardActivity({ activity, handleDelete }) {
   return (
