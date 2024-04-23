@@ -1,11 +1,10 @@
 import Input from "../../Elements/input/Input";
 import Label from "../../Elements/input/Label";
-import SelectOption from "../../Elements/SelectOption";
 import { useEffect, useState } from "react";
 import useUpload from "../../../hooks/useUpload";
 import { Link } from "react-router-dom";
-import "./FormActivity.css";
 import useGetData from "../../../hooks/useGetData";
+import SelectOption from "../../Elements/SelectOption/SelectOption";
 
 export default function FormActivity({ activity, onSubmit }) {
   const [file, setFile] = useState(null);
@@ -62,6 +61,33 @@ export default function FormActivity({ activity, onSubmit }) {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const select = document.getElementById("select-categories");
+    const categoryId = select.value;
+    if (categoryId === "Select") {
+      return;
+    }
+
+    const dataActivity = {
+      categoryId: categoryId,
+      title: e.target.title.value,
+      description: e.target.description.value,
+      imageUrls: imageUrls,
+      price: Number(e.target.price.value),
+      price_discount: Number(e.target.price_discount.value),
+      rating: Number(e.target.rating.value),
+      total_reviews: Number(e.target.total_reviews.value),
+      facilities: e.target.facilities.value,
+      address: e.target.address.value,
+      city: e.target.city.value,
+      province: e.target.province.value,
+      location_maps: e.target.location_maps.value,
+    };
+    onSubmit(dataActivity);
   };
 
   return (
