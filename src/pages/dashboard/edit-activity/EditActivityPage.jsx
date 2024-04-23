@@ -3,7 +3,7 @@ import useGetData from "../../../hooks/useGetData";
 import useUpdate from "../../../hooks/useUpdate";
 import FormActivity from "../../../component/Fragments/FormActivity/FormActivity";
 
-export default function DetailActivityPage({ params }) {
+export default function EditActivityPage({ params }) {
   const [activity, setActivity] = useState({});
   const { getData } = useGetData();
   const { update } = useUpdate();
