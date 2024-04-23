@@ -3,6 +3,7 @@ import useGetData from "../../../hooks/useGetData";
 import useUpdate from "../../../hooks/useUpdate";
 import FormActivity from "../../../component/Fragments/FormActivity/FormActivity";
 import { useParams } from "react-router-dom";
+import Layout from "../../../layouts/Layout";
 
 export default function EditActivityPage() {
   const [activity, setActivity] = useState({});
@@ -27,8 +28,10 @@ export default function EditActivityPage() {
   };
 
   return (
-    <div className="container-lg mt-5">
-      <FormActivity activity={activity} onSubmit={handleEditActivity} />
-    </div>
+    <Layout>
+      <div className="container-lg mt-5">
+        <FormActivity activity={activity} onSubmit={handleEditActivity} />
+      </div>
+    </Layout>
   );
 }
