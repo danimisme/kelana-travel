@@ -1,16 +1,29 @@
 import { Link } from "react-router-dom";
 import Layout from "../../../layouts/Layout";
-
 import useGetData from "../../../hooks/useGetData";
 import { useEffect, useState } from "react";
 import CardActivity from "../../../component/Fragments/DashboardCardActivity/CardActivity";
+import useDelete from "../../../hooks/useDelete";
 
 export default function ActivityDashboardPage() {
   const { getData } = useGetData();
   const [activities, setActivities] = useState([]);
+  const { deleteData } = useDelete();
+
   useEffect(() => {
     getData("activities").then((res) => setActivities(res.data.data));
   }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      const res = await deleteData(`delete-activity/${id}`);
+      if (res.status === 200) {
+        getData("activities").then((res) => setActivities(res.data.data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   console.log(activities);
   return (
@@ -37,7 +50,7 @@ export default function ActivityDashboardPage() {
           <div className="row justify-content-center">
             {activities.map((activity) => (
               <div className="col-lg-4 col-md-6 col-10 mt-3" key={activity.id}>
-                <CardActivity activity={activity} />
+                <CardActivity activity={activity} handleDelete={handleDelete} />
               </div>
             ))}
           </div>
