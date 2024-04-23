@@ -4,11 +4,17 @@ import CardActivity from "../../component/Fragments/CardAcivity/CardActivity";
 import SelectOption from "../../component/Elements/SelectOption/SelectOption";
 import "./ActivityPage.css";
 import Layout from "../../layouts/Layout";
+import Pagination from "../../component/Elements/Pagination/Pagination";
 
 export default function ActivityPage() {
   const { getData } = useGetData();
   const [activities, setActivities] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 6;
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const totalPages = Math.ceil(activities.length / itemsPerPage);
   useEffect(() => {
     getData("activities").then((res) => setActivities(res.data.data));
     getData("categories").then((res) => setCategories(res.data.data));
@@ -88,6 +94,7 @@ export default function ActivityPage() {
             </div>
           ))}
         </div>
+        <Pagination page={page} setPage={setPage} pages={totalPages} />
       </div>
     </Layout>
   );
