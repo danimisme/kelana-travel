@@ -19,6 +19,7 @@ import Home from "../pages/home/home";
 import LoginPage from "../pages/login/loginPage";
 import ProfilePage from "../pages/profile/ProfilePage";
 import PromoPage from "../pages/promo/PromoPage";
+import RegisterPage from "../pages/register/RegisterPage";
 
 export const routeList = [
   {
@@ -28,6 +29,10 @@ export const routeList = [
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
   },
   {
     path: "/activity",
