@@ -5,6 +5,7 @@ import useUpload from "../../../hooks/useUpload";
 import Input from "../../Elements/input/Input";
 import Label from "../../Elements/input/Label";
 import CheckBox from "../../Elements/CheckBox";
+import "./RegisterForm.css";
 
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
