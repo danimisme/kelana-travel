@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import useAuth from "../../../hooks/useAuth";
 import useUpload from "../../../hooks/useUpload";
 import Input from "../../Elements/input/Input";
 import Label from "../../Elements/input/Label";
 import CheckBox from "../../Elements/CheckBox";
 import "./RegisterForm.css";
 
-export default function RegisterForm() {
+export default function RegisterForm({ onSubmit }) {
   const [showPassword, setShowPassword] = useState(false);
   const [section, setSection] = useState(1);
   const [profilePictureUrl, setProfilePictureUrl] = useState(null);
@@ -51,11 +50,26 @@ export default function RegisterForm() {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userData = {
+      email: e.target.email.value,
+      name: e.target.name.value,
+      password: e.target.password.value,
+      passwordRepeat: e.target.passwordRepeat.value,
+      role: e.target.role.value,
+      profilePictureUrl: profilePictureUrl,
+      phoneNumber: e.target.phoneNumber.value,
+    };
+
+    await onSubmit(userData);
+  };
+
   return (
     <div className="container-lg mt-5">
       <h1 className=" mt-5 py-3">Register</h1>
       <p>Please input your data </p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="row">
           <div
             className={`col-md-6  ${
@@ -162,7 +176,7 @@ export default function RegisterForm() {
         </button>
       </form>
       <p className=" mt-3">
-        Already have an account? <Link href="/login">Login</Link>
+        Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
   );
