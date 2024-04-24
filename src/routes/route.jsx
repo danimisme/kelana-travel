@@ -17,6 +17,7 @@ import DetailActivityPage from "../pages/detailActivity/DetailActivityPage";
 import DetailPromoPage from "../pages/detailPromo/detailPromo";
 import Home from "../pages/home/home";
 import LoginPage from "../pages/login/loginPage";
+import ProfilePage from "../pages/profile/ProfilePage";
 import PromoPage from "../pages/promo/PromoPage";
 
 export const routeList = [
@@ -43,6 +44,10 @@ export const routeList = [
   {
     path: "/promo/:id",
     element: <DetailPromoPage />,
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage />,
   },
 
   {
