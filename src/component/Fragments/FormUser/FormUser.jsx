@@ -5,6 +5,7 @@ import useUpload from "../../../hooks/useUpload";
 import useUpdate from "../../../hooks/useUpdate";
 import Input from "../../Elements/input/Input";
 import Label from "../../Elements/input/Label";
+import "./FormUser.css";
 
 export default function EditUserForm({ user }) {
   const dispatch = useDispatch();
@@ -75,10 +76,10 @@ export default function EditUserForm({ user }) {
         isFormUserOpen ? "show_form" : "hide_form"
       }`}
     >
-      <form onSubmit={handleUpdateUser}>
+      <form className="form_user" onSubmit={handleUpdateUser}>
         <h2>Edit User</h2>
         <i
-          className={` bi bi-x-circle fs-3`}
+          className=" close_btn_form bi bi-x-circle fs-3"
           onClick={() => handleCloseForm()}
         ></i>
         <div className="mb-3 d-flex align-items-center gap-3">
@@ -98,7 +99,8 @@ export default function EditUserForm({ user }) {
               <p className="text-danger small">{massageImage}</p>
             )}
             <button
-              className="btn btn-success"
+              className="default-button mt-2"
+              style={{ backgroundColor: "#FB6D48" }}
               onClick={handleUpload}
               disabled={isLoading}
             >
@@ -128,8 +130,21 @@ export default function EditUserForm({ user }) {
             defaultValue={user?.phoneNumber}
           />
         </div>
-        <button className="btn btn-success" type="submit" disabled={isLoading}>
+        <button
+          className="default-button mx-2"
+          style={{ backgroundColor: "green" }}
+          type="submit"
+          disabled={isLoading}
+        >
           Submit
+        </button>
+        <button
+          className="default-button mx-2"
+          onClick={() => handleCloseForm()}
+          type="button"
+          style={{ backgroundColor: "salmon" }}
+        >
+          Cancel
         </button>
       </form>
     </div>

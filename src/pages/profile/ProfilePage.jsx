@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import useAuth from "../../hooks/useAuth";
 import Layout from "../../layouts/Layout";
+import { toggleFormUser } from "../../redux/slice/FormUserSlice";
+import EditUserForm from "../../component/Fragments/FormUser/FormUser";
 export default function ProfilePage() {
   const { userLog } = useAuth();
   const [user, setUser] = useState({});
@@ -45,13 +47,13 @@ export default function ProfilePage() {
             </p>
             <button
               className="default-button btn-orange w-50"
-              // onClick={() => dispatch(toggleFormUser())}
+              onClick={() => dispatch(toggleFormUser())}
             >
               Edit Profile
             </button>
           </div>
         </div>
-        {/* <EditUserForm user={user} /> */}
+        <EditUserForm user={user} />
       </div>
     </Layout>
   );
