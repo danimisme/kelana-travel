@@ -7,7 +7,7 @@ import Input from "../../Elements/input/Input";
 import Label from "../../Elements/input/Label";
 import "./FormUser.css";
 
-export default function EditUserForm({ user }) {
+export default function EditUserForm({ user, onSubmit }) {
   const dispatch = useDispatch();
   const isFormUserOpen = useSelector((state) => state.formUser.isFormUserOpen);
   const [file, setFile] = useState(null);
@@ -44,6 +44,13 @@ export default function EditUserForm({ user }) {
       return res.data.url;
     } catch (error) {
       console.log(error);
+      setMassageImage("Failed to upload image, try another image");
+      setIsLoading(true);
+      setTimeout(() => {
+        setMassageImage(null);
+        setIsLoading(false);
+        e.target.value = null;
+      }, 3000);
     }
   };
 
@@ -55,12 +62,8 @@ export default function EditUserForm({ user }) {
       phoneNumber: e.target.phoneNumber.value,
       profilePictureUrl: profilePictureUrl || user?.profilePictureUrl,
     };
-    try {
-      await update("update-profile", userData);
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
+    await onSubmit(userData);
+    handleCloseForm();
   };
 
   const handleCloseForm = () => {
