@@ -3,12 +3,14 @@ import RegisterForm from "../../component/Fragments/RegisterForm/RegisterForm";
 import useAuth from "../../hooks/useAuth";
 
 export default function RegisterPage() {
-  const { register } = useAuth();
   const navigate = useNavigate();
+  const { auth } = useAuth();
   const handleRegister = async (data) => {
     try {
-      await register(data);
-      navigate("/login");
+      const res = await auth("register", data);
+      if (res.status === 200) {
+        navigate("/login");
+      }
     } catch (error) {
       console.log(error);
     }
