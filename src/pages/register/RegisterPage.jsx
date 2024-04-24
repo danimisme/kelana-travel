@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import RegisterForm from "../../component/Fragments/RegisterForm/RegisterForm";
 import useAuth from "../../hooks/useAuth";
+import "./RegisterPage.css";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -17,10 +18,12 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="row d-flex vh-100 align-items-center justify-content-center">
-      <div className="col-lg-6 col-md-8 offset-lg-3 col-10">
-        <RegisterForm onSubmit={handleRegister} />
+    <main className="register_page">
+      <div className="row d-flex vh-100 align-items-center justify-content-center">
+        <div className="col-lg-6 col-md-8 offset-lg-3 col-10">
+          <RegisterForm onSubmit={handleRegister} />
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
