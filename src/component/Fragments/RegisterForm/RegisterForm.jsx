@@ -66,13 +66,13 @@ export default function RegisterForm({ onSubmit }) {
   };
 
   return (
-    <div className="container-lg mt-5">
-      <h1 className=" mt-5 py-3">Register</h1>
+    <div className="container-lg register_form">
+      <h1>Register</h1>
       <p>Please input your data </p>
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div
-            className={`col-md-6  ${
+            className={`col-md-6 col-xl-12  ${
               section === 1 ? "register_1" : "register_1_hide"
             }`}
           >
@@ -110,7 +110,7 @@ export default function RegisterForm({ onSubmit }) {
             </div>
           </div>
           <div
-            className={`col-md-6 ${
+            className={`col-md-6 col-xl-12 ${
               section === 2 ? "register_2" : "register_2_hide"
             }`}
           >
@@ -158,8 +158,8 @@ export default function RegisterForm({ onSubmit }) {
         </div>
         <button
           type="button"
-          className={`btn-next-form btn me-3 ${
-            section === 1 ? "btn-primary" : "btn-secondary"
+          className={`btn-next-form default-button me-3 ${
+            section === 1 ? " btn-blue" : "btn-red"
           }`}
           onClick={() => changeSection()}
         >
@@ -167,7 +167,7 @@ export default function RegisterForm({ onSubmit }) {
         </button>
         <button
           type="submit"
-          className={`btn btn-primary ${
+          className={` default-button btn-orange ${
             section === 2 ? "btn_register" : "btn_register_hide"
           }`}
           disabled={isLoading}
@@ -175,8 +175,14 @@ export default function RegisterForm({ onSubmit }) {
           Register
         </button>
       </form>
-      <p className=" mt-3">
-        Already have an account? <Link to="/login">Login</Link>
+      <p className=" mt-3 fw-bold">
+        Already have an account?{" "}
+        <Link
+          to="/login"
+          className="text-decoration-none text-info text_shadow"
+        >
+          Login here
+        </Link>
       </p>
     </div>
   );
