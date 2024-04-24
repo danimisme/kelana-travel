@@ -10,7 +10,6 @@ import "./RegisterForm.css";
 export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [section, setSection] = useState(1);
-  const { auth } = useAuth();
   const [profilePictureUrl, setProfilePictureUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(null);
@@ -28,6 +27,12 @@ export default function RegisterForm() {
       setMessage(
         "File harus berupa gambar dengan format JPEG, PNG, GIF, BMP, atau TIFF."
       );
+      setTimeout(() => {
+        setMessage(null);
+        setIsLoading(false);
+        e.target.value = null;
+      }, 3000);
+      return false;
     }
     const formData = new FormData();
     formData.append("image", file);
