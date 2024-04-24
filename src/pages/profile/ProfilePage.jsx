@@ -4,15 +4,29 @@ import useAuth from "../../hooks/useAuth";
 import Layout from "../../layouts/Layout";
 import { toggleFormUser } from "../../redux/slice/FormUserSlice";
 import EditUserForm from "../../component/Fragments/FormUser/FormUser";
+import useUpdate from "../../hooks/useUpdate";
 export default function ProfilePage() {
   const { userLog } = useAuth();
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
+  const { update } = useUpdate();
   useEffect(() => {
     userLog("user", (res) => {
       setUser(res);
     });
   }, []);
+
+  const updateUser = async (data) => {
+    try {
+      await update(`update-profile/`, data);
+      userLog("user", (res) => {
+        setUser(res);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Layout>
       <div className="mt-5 container-lg py-5">
@@ -53,7 +67,7 @@ export default function ProfilePage() {
             </button>
           </div>
         </div>
-        <EditUserForm user={user} />
+        <EditUserForm user={user} onSubmit={updateUser} />
       </div>
     </Layout>
   );
