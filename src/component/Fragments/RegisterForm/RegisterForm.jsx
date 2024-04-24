@@ -49,7 +49,7 @@ export default function RegisterForm() {
   return (
     <div className="container-lg mt-5">
       <h1 className=" mt-5 py-3">Register</h1>
-      <p>input your data </p>
+      <p>Please input your data </p>
       <form>
         <div className="row">
           <div
@@ -104,9 +104,12 @@ export default function RegisterForm() {
               />
               <Label htmlFor="phoneNumber">Phone Number</Label>
             </div>
-            <div className="form-floating mb-3">
-              <Input type="text" name="role" id="role" placeholder="role" />
-              <Label htmlFor="role">role</Label>
+            <div className=" mb-3">
+              <Label htmlFor="role">Select Role</Label>
+              <select className="form-select" id="select-role" name="role">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
             </div>
             {message && (
               <div className="alert alert-danger" role="alert">
