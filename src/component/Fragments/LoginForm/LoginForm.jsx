@@ -91,12 +91,15 @@ export default function LoginForm() {
           />
           <Label htmlFor="password"> Your Password </Label>
         </div>
-        <button className="btn btn-primary" disabled={isLoading}>
+        <button className="default-button btn-orange" disabled={isLoading}>
           {isLoading ? "Loading..." : "Login"}
         </button>
       </form>
-      <p className="mt-3">
-        Don&apos;t have an account? <Link to="/register">Register</Link>
+      <p className="mt-3  fs-5 text-center">
+        Don&apos;t have an account?{" "}
+        <Link to="/register" className="text-info fw-bold text-decoration-none">
+          Register here
+        </Link>
       </p>
     </div>
   );
