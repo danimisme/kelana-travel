@@ -4,6 +4,8 @@ import useUpdate from "../../../hooks/useUpdate";
 import FormActivity from "../../../component/Fragments/FormActivity/FormActivity";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../../layouts/Layout";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function EditActivityPage() {
   const [activity, setActivity] = useState({});
@@ -18,13 +20,14 @@ export default function EditActivityPage() {
   }, []);
 
   const handleEditActivity = async (data) => {
-    try {
-      const res = await update(`update-activity/${params.id}`, data);
-      if (res.status === 200) {
+    const res = await update(`update-activity/${params.id}`, data);
+    if (res.status === 200) {
+      toast.success(res.data.message);
+      setTimeout(() => {
         navigate("/dashboard/activity");
-      }
-    } catch (error) {
-      console.log(error);
+      }, 1500);
+    } else {
+      toast.error(res.data.message);
     }
   };
 
@@ -33,6 +36,18 @@ export default function EditActivityPage() {
       <div className="container-lg mt-5">
         <FormActivity activity={activity} onSubmit={handleEditActivity} />
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        theme="light"
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Layout>
   );
 }
