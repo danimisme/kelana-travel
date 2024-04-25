@@ -23,6 +23,11 @@ export default function FormBanner({ banner, onSubmit }) {
       setMessage(
         "File harus berupa gambar dengan format JPEG, PNG, GIF, BMP, atau TIFF."
       );
+      setTimeout(() => {
+        setMessage(null);
+        setIsLoading(false);
+        e.target.value = null;
+      }, 3000);
       return;
     }
 
@@ -48,6 +53,15 @@ export default function FormBanner({ banner, onSubmit }) {
       name: e.target.name.value,
       imageUrl: bannerImageUrl,
     };
+    for (const key in bannerData) {
+      if (!bannerData[key]) {
+        setMessage("Please input all fields");
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+        return;
+      }
+    }
 
     onSubmit(bannerData);
   };
@@ -90,7 +104,7 @@ export default function FormBanner({ banner, onSubmit }) {
             </Label>
             <Input type="file" onChange={handleFileChange} id="image" />
           </div>
-          {message && <p className="text-danger">{message}</p>}
+          {message && <div className="alert alert-danger">{message}</div>}
           <button className="default-button btn-orange" disabled={isLoading}>
             {banner ? "Edit Banner" : "Create Banner"}
           </button>
