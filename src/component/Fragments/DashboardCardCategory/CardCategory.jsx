@@ -1,9 +1,18 @@
 import moment from "moment/moment";
 import { Link } from "react-router-dom";
 import "./CardCategory.css";
-export default function CardCategory({ category, handleDelete }) {
+import Animation from "../../../utils/aos";
+import { useEffect } from "react";
+export default function CardCategory({ category, handleDelete, index }) {
+  useEffect(() => {
+    Animation();
+  }, []);
   return (
-    <div className="card card-category m-3 rounded">
+    <div
+      className="card card-category m-3 rounded"
+      data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+      data-aos-delay={(index % 6) * 100}
+    >
       <div className="card-img-top">
         <img
           src={category.imageUrl}

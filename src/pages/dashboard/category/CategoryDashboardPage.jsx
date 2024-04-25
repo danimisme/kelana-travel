@@ -48,9 +48,13 @@ export default function CategoryDashboardPage() {
             </Link>
           </div>
           <div className="row justify-content-center">
-            {categories.slice(startIndex, endIndex).map((category) => (
+            {categories.slice(startIndex, endIndex).map((category, index) => (
               <div className="col-10 col-md-6 col-lg-4 my-3" key={category.id}>
-                <CardCategory category={category} handleDelete={handleDelete} />
+                <CardCategory
+                  category={category}
+                  handleDelete={handleDelete}
+                  index={index}
+                />
               </div>
             ))}
           </div>
