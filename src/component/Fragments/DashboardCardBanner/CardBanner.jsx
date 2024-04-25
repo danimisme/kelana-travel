@@ -1,10 +1,18 @@
 import moment from "moment/moment";
 import "./CardBanner.css";
 import { Link } from "react-router-dom";
+import Animation from "../../../utils/aos";
+import { useEffect } from "react";
 
 export default function CardBanner({ banner, index, handleDelete }) {
+  useEffect(() => {
+    Animation();
+  }, []);
   return (
-    <div className="card card-banner m-3 rounded">
+    <div
+      className="card card-banner m-3 rounded"
+      data-aos={index % 2 === 0 ? "fade-up" : "fade-down"}
+    >
       <div className="card-img-top">
         <img
           src={banner.imageUrl}
