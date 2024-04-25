@@ -13,11 +13,11 @@ export default function BannerCarousel() {
       items: 1,
     },
     568: {
-      items: 2,
+      items: 1,
     },
     800: {
-      items: 3,
-      itemsFit: "contain",
+      items: 1,
+      itemsFit: "cover",
     },
   };
 
@@ -26,24 +26,20 @@ export default function BannerCarousel() {
   }, []);
 
   return (
-    <div className="banner">
-      <h2 className="text-center text-white mb-2">Popular Destinations</h2>
-      <p className="text-center text-white lead d-none d-md-block">
-        &quot;Feel the journey that you may have never experienced before.&quot;
-      </p>
+    <div className="banner d-flex justify-content-center align-items-center ">
       <AliceCarousel
         mouseTracking
         autoPlay
         autoPlayInterval={2000}
         infinite
         disableButtonsControls
-        // disableDotsControls
+        disableDotsControls
         // onSlideChange={handleOnSlideChange}
         // onSlideChanged={handleOnSlideChanged}
         responsive={responsive}
       >
         {banners.map((banner) => (
-          <div key={banner.id}>
+          <div key={banner.id} className="banner-item">
             <img
               src={banner.imageUrl}
               alt={banner.title}
