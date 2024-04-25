@@ -11,8 +11,10 @@ export default function CreateBannerPage() {
   const handleCreateBanner = async (data) => {
     const res = await create("create-banner", data);
     if (res.status === 200) {
-      navigate("/dashboard/banner");
       toast.success(res.data.message);
+      setTimeout(() => {
+        navigate("/dashboard/banner");
+      }, 1500);
     }
   };
 
