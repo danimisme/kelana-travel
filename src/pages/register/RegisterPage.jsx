@@ -15,18 +15,16 @@ export default function RegisterPage() {
     Animation();
   }, []);
   const handleRegister = async (data) => {
-    try {
-      const res = await auth("register", data);
-      if (res.status === 200) {
-        setTimeout(() => {
-          navigate("/login");
-        }, 1500);
-        toast.success("Register Success");
-      }
-      return res;
-    } catch (error) {
-      console.log(error);
+    const res = await auth("register", data);
+    if (res?.status === 200) {
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
+      toast.success("Register Success");
+    } else {
+      toast.error(res.response.data.message);
     }
+    return res;
   };
 
   return (
