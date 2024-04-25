@@ -21,7 +21,7 @@ export default function LoginPage() {
       setTimeout(() => {
         navigate("/dashboard/user");
       }, 1500);
-      toast.success("Login Success");
+      toast.success(res.data.message);
     } else {
       toast.error(res.response.data.message);
     }
