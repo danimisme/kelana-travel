@@ -5,6 +5,11 @@ import { useEffect, useState } from "react";
 import CardCategory from "../../../component/Fragments/DashboardCardCategory/CardCategory";
 import useDelete from "../../../hooks/useDelete";
 import Pagination from "../../../component/Elements/Pagination/Pagination";
+import { openModalDelete } from "../../../redux/slice/ModalDeleteSlice";
+import { useDispatch } from "react-redux";
+import ModalDelete from "../../../component/Elements/Modals/ModalDelete/ModalDelete";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function CategoryDashboardPage() {
   const { getData } = useGetData();
   const [categories, setCategories] = useState([]);
@@ -14,15 +19,23 @@ export default function CategoryDashboardPage() {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const totalPages = Math.ceil(categories.length / itemsPerPage);
+  const dispatch = useDispatch();
+  const [categoryId, setCategoryId] = useState(null);
   useEffect(() => {
     getData("categories").then((res) => setCategories(res.data.data));
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = (id) => {
+    setCategoryId(id);
+    dispatch(openModalDelete());
+  };
+
+  const deleteBanner = async (id) => {
     try {
       const res = await deleteData(`delete-category/${id}`);
       if (res.status === 200) {
         getData("categories").then((res) => setCategories(res.data.data));
+        toast.success(res.data.message);
       }
     } catch (error) {
       console.log(error);
@@ -61,6 +74,18 @@ export default function CategoryDashboardPage() {
           <Pagination page={page} setPage={setPage} pages={totalPages} />
         </div>
       </div>
+      <ModalDelete onConfirm={deleteBanner} id={categoryId} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Layout>
   );
 }
