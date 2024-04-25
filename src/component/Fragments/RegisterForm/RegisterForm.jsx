@@ -62,7 +62,25 @@ export default function RegisterForm({ onSubmit }) {
       phoneNumber: e.target.phoneNumber.value,
     };
 
-    await onSubmit(userData);
+    if (userData.password !== userData.passwordRepeat) {
+      setMessage("Password and Repeat Password does not match");
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+      return;
+    }
+
+    for (const key in userData) {
+      if (!userData[key]) {
+        setMessage("Please input all fields");
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+        return;
+      }
+    }
+
+    onSubmit(userData);
   };
 
   return (
@@ -130,11 +148,7 @@ export default function RegisterForm({ onSubmit }) {
                 <option value="admin">Admin</option>
               </select>
             </div>
-            {message && (
-              <div className="alert alert-danger" role="alert">
-                {message}
-              </div>
-            )}
+
             {profilePictureUrl && (
               <div>
                 <img
@@ -155,6 +169,11 @@ export default function RegisterForm({ onSubmit }) {
               <Label htmlFor="profilePictureUrl">Profil Picture URL</Label>
             </div>
           </div>
+          {message && (
+            <div className="alert alert-danger" role="alert">
+              {message}
+            </div>
+          )}
         </div>
         <button
           type="button"
@@ -175,12 +194,9 @@ export default function RegisterForm({ onSubmit }) {
           Register
         </button>
       </form>
-      <p className=" mt-3 fw-bold">
+      <p className=" mt-3 fs-5">
         Already have an account?{" "}
-        <Link
-          to="/login"
-          className="text-decoration-none text-info text_shadow"
-        >
+        <Link to="/login" className="text-decoration-none text-info fw-bold ">
           Login here
         </Link>
       </p>
