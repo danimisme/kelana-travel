@@ -1,13 +1,20 @@
 import "./CardUser.css";
+import Animation from "../../../utils/aos";
+import { useEffect } from "react";
 export default function CardUser({ user, index, handleUpdateRole }) {
   const bg = index % 3 === 0 ? "bg1" : index % 3 === 1 ? "bg2" : "bg3";
   const bgBody =
     index % 3 === 0 ? "bg-body1" : index % 3 === 1 ? "bg-body2" : "bg-body3";
+  useEffect(() => {
+    Animation();
+  }, []);
   return (
     <div
       className={`card my-3 ${bg} ${
         user.role === "admin" ? "bg_admin" : "bg_user"
       }`}
+      data-aos="fade-up"
+      data-aos-delay={(index % 8) * 100}
     >
       <div className="w-100 d-flex justify-content-center py-3">
         <img
