@@ -8,13 +8,17 @@ import "./home.css";
 export default function Home() {
   return (
     <Layout>
-      <main>
-        <div className="jumbotron d-flex align-items-center justify-content-center text-white ">
-          <h1 className="text_shadow fs-1 fw-bold">
-            Adventure to Explore <br /> Through the Beautiful World
-          </h1>
+      <main className="mt-5 py-5">
+        <div className="row d-flex align-items-center justify-content-center mt-5">
+          <div className="col-lg-4  col-10 ">
+            <h1 className=" fs-1 fw-bold">
+              Adventure to Explore <br /> Through the Beautiful World
+            </h1>
+          </div>
+          <div className="col-lg-5 col-10">
+            <BannerCarousel />
+          </div>
         </div>
-        <BannerCarousel />
         <PromoCarousel />
         <CategoryCarousel />
         <ActivityCarousel />
