@@ -49,11 +49,12 @@ export default function PromoDashboardPage() {
             </Link>
           </div>
           <div className="row justify-content-center">
-            {promos.slice(startIndex, endIndex).map((promo) => (
+            {promos.slice(startIndex, endIndex).map((promo, index) => (
               <div className="col-lg-4 col-md-6 col-10 mt-3" key={promo.id}>
                 <CardPromo
                   key={promo.id}
                   promo={promo}
+                  index={index}
                   handleDelete={handleDelete}
                 />
               </div>
