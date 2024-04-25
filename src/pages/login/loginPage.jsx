@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import LoginForm from "../../component/Fragments/LoginForm/LoginForm";
 import "./LoginPage.css";
 import useAuth from "../../hooks/useAuth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -11,7 +13,10 @@ export default function LoginPage() {
     try {
       const res = await auth("login", data);
       if (res.status === 200) {
-        navigate("/dashboard");
+        setTimeout(() => {
+          navigate("/dashboard/user");
+        }, 1500);
+        toast.success("Login Success");
       }
       return res;
     } catch (error) {
@@ -40,6 +45,18 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        theme="light"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </main>
   );
 }

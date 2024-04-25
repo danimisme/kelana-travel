@@ -38,7 +38,6 @@ export default function LoginForm({ onSubmit }) {
       if (res.status === 200) {
         getUserLogged();
         setTimeout(() => {
-          navigate("/dashboard/user");
           setMessage(null);
           setIsLoading(false);
         }, 1000);
