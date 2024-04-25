@@ -6,6 +6,11 @@ import CardActivity from "../../../component/Fragments/DashboardCardActivity/Car
 import useDelete from "../../../hooks/useDelete";
 import Pagination from "../../../component/Elements/Pagination/Pagination";
 import SelectOption from "../../../component/Elements/SelectOption/SelectOption";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ModalDelete from "../../../component/Elements/Modals/ModalDelete/ModalDelete";
+import { openModalDelete } from "../../../redux/slice/ModalDeleteSlice";
+import { useDispatch } from "react-redux";
 
 export default function ActivityDashboardPage() {
   const { getData } = useGetData();
@@ -17,21 +22,25 @@ export default function ActivityDashboardPage() {
   const endIndex = startIndex + itemsPerPage;
   const totalPages = Math.ceil(activities.length / itemsPerPage);
   const [categories, setCategories] = useState([]);
+  const [activityId, setActivityId] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getData("activities").then((res) => setActivities(res.data.data));
     getData("categories").then((res) => setCategories(res.data.data));
   }, []);
 
-  const handleDelete = async (id) => {
-    try {
-      const res = await deleteData(`delete-activity/${id}`);
-      if (res.status === 200) {
-        getData("activities").then((res) => setActivities(res.data.data));
-      }
-    } catch (error) {
-      console.log(error);
+  const deleteActivity = async (id) => {
+    const res = await deleteData(`delete-activity/${id}`);
+    if (res.status === 200) {
+      getData("activities").then((res) => setActivities(res.data.data));
+      toast.success(res.data.message);
     }
+  };
+
+  const handleDelete = (id) => {
+    setActivityId(id);
+    dispatch(openModalDelete());
   };
 
   const handleReset = () => {
@@ -114,6 +123,18 @@ export default function ActivityDashboardPage() {
           <Pagination page={page} setPage={setPage} pages={totalPages} />
         </div>
       </div>
+      <ModalDelete id={activityId} onConfirm={deleteActivity} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Layout>
   );
 }
