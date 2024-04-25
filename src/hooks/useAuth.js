@@ -16,7 +16,7 @@ export default function useAuth() {
       localStorage.setItem("token", res.data.token);
       return res;
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 
@@ -39,7 +39,7 @@ export default function useAuth() {
         callback(res.data.data);
       }
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
 
