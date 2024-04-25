@@ -2,19 +2,19 @@ import Layout from "../../../layouts/Layout";
 import FormActivity from "../../../component/Fragments/FormActivity/FormActivity";
 import useCreate from "../../../hooks/useCreate";
 import { useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function CreateActivityPage() {
   const { create } = useCreate();
   const navigate = useNavigate();
 
   const handleCreate = async (data) => {
-    try {
-      const res = await create("create-activity", data);
-      if (res.status === 200) {
-        navigate("/dashboard/activity");
-      }
-    } catch (error) {
-      console.log(error);
+    const res = await create("create-activity", data);
+    toast.success(res.data.message);
+    if (res.status === 200) {
+      navigate("/dashboard/activity");
+    } else {
+      toast.error(res.data.message);
     }
   };
   return (
@@ -24,6 +24,18 @@ export default function CreateActivityPage() {
           <FormActivity onSubmit={handleCreate} />
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        theme="light"
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Layout>
   );
 }

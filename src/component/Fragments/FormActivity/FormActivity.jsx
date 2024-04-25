@@ -15,6 +15,7 @@ export default function FormActivity({ activity, onSubmit }) {
   const [categories, setCategories] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
   const [massageImage, setMassageImage] = useState(null);
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     getData("categories").then((res) => {
@@ -49,6 +50,11 @@ export default function FormActivity({ activity, onSubmit }) {
     setIsLoadingImage(true);
     if (!file) {
       setMassageImage("Please select an image file");
+      setTimeout(() => {
+        setMassageImage(null);
+        setIsLoadingImage(false);
+        e.target.value = null;
+      }, 3000);
       return;
     }
     const formData = new FormData();
@@ -70,6 +76,10 @@ export default function FormActivity({ activity, onSubmit }) {
     const select = document.getElementById("select-categories");
     const categoryId = select.value;
     if (categoryId === "Select") {
+      setMessage("Please select a category");
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
       return;
     }
 
@@ -88,6 +98,16 @@ export default function FormActivity({ activity, onSubmit }) {
       province: e.target.province.value,
       location_maps: e.target.location_maps.value,
     };
+    for (const key in dataActivity) {
+      if (!dataActivity[key]) {
+        setMessage("Please input all fields");
+        console.log(message);
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+        return;
+      }
+    }
     onSubmit(dataActivity);
   };
 
@@ -183,7 +203,9 @@ export default function FormActivity({ activity, onSubmit }) {
                 <Input id="imageUrls" type="file" onChange={handleFileChange} />
               </div>
               <div className="mb-3">
-                {massageImage && <p className="text-danger">{massageImage}</p>}
+                {massageImage && (
+                  <div className="alert alert-danger">{massageImage}</div>
+                )}
                 <button
                   className="default-button mt-2"
                   style={{ backgroundColor: "#FF6868" }}
@@ -219,6 +241,7 @@ export default function FormActivity({ activity, onSubmit }) {
                   defaultValue={activity?.location_maps}
                 />
               </div>
+              {message && <div className="alert alert-danger">{message}</div>}
               <div className="mb-3">
                 <button
                   className="default-button me-2"
