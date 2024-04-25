@@ -1,11 +1,10 @@
-/* .jumbotron {
-    background-image: url('/images/pietro-de-grand.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 500px;
-    
-} */
+.promo_section {
+    background-color: #FFEC9E ;
+    border-radius: 20px;
+}
+.category_section {
+    background-color: #EBC49F ;
+}
 
 .text_shadow {
     text-shadow: 2px 2px 4px #000000;
