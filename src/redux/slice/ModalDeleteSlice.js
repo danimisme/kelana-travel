@@ -16,3 +16,7 @@ export const modalDeleteSlice = createSlice({
     },
   },
 });
+
+export const { openModalDelete, closeModalDelete } = modalDeleteSlice.actions;
+
+export default modalDeleteSlice.reducer;
