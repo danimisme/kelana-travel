@@ -4,10 +4,16 @@ import useAuth from "../../hooks/useAuth";
 import "./RegisterPage.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Animation from "../../utils/aos";
+import { useEffect } from "react";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
   const { auth } = useAuth();
+
+  useEffect(() => {
+    Animation();
+  }, []);
   const handleRegister = async (data) => {
     try {
       const res = await auth("register", data);
@@ -25,10 +31,13 @@ export default function RegisterPage() {
   return (
     <main className="register_page">
       <div className="row d-flex vh-100 align-items-center ">
-        <div className="col-xl-4 col-md-8 offset-1 col-10">
+        <div className="col-xl-4 col-md-8 offset-1 col-10" data-aos="fade-down">
           <RegisterForm onSubmit={handleRegister} />
         </div>
-        <div className="col-xl-5 offset-xl-1 d-none d-xl-block">
+        <div
+          className="col-xl-5 offset-xl-1 d-none d-xl-block"
+          data-aos="fade-up"
+        >
           <h1 className="text-white fs-1 fw-bold text_shadow">
             Join our platform today to connect with travelers and expand your
             reach
