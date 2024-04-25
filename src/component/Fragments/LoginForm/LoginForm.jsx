@@ -7,9 +7,8 @@ import Input from "../../Elements/input/Input";
 import Label from "../../Elements/input/Label";
 import CheckBox from "../../Elements/CheckBox";
 
-export default function LoginForm() {
+export default function LoginForm({ onSubmit }) {
   const [showPassword, setShowPassword] = useState(false);
-  const { auth } = useAuth();
   const { userLog } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(null);
@@ -35,7 +34,7 @@ export default function LoginForm() {
     };
 
     try {
-      const res = await auth("login", userData);
+      const res = await onSubmit(userData);
       if (res.status === 200) {
         getUserLogged();
         setTimeout(() => {
