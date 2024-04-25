@@ -33,22 +33,18 @@ export default function LoginForm({ onSubmit }) {
       password: e.target.password.value,
     };
 
-    try {
-      const res = await onSubmit(userData);
-      if (res.status === 200) {
-        getUserLogged();
-        setTimeout(() => {
-          setMessage(null);
-          setIsLoading(false);
-        }, 1000);
-      }
-    } catch (error) {
-      setMessage("Failed to login");
+    const res = await onSubmit(userData);
+    if (res.status === 200) {
+      getUserLogged();
+      setTimeout(() => {
+        setMessage(null);
+        setIsLoading(false);
+      }, 1000);
+    } else {
       setTimeout(() => {
         setMessage(null);
         setIsLoading(false);
       }, 2000);
-      console.log(error);
     }
   };
 
