@@ -101,9 +101,13 @@ export default function ActivityDashboardPage() {
           </div>
 
           <div className="row justify-content-center">
-            {activities.slice(startIndex, endIndex).map((activity) => (
+            {activities.slice(startIndex, endIndex).map((activity, index) => (
               <div className="col-lg-4 col-md-6 col-10 mt-3" key={activity.id}>
-                <CardActivity activity={activity} handleDelete={handleDelete} />
+                <CardActivity
+                  activity={activity}
+                  handleDelete={handleDelete}
+                  index={index}
+                />
               </div>
             ))}
           </div>

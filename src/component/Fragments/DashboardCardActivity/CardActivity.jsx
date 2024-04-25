@@ -1,10 +1,19 @@
 import moment from "moment";
 import { Link } from "react-router-dom";
 import "./CardActiviry.css";
+import Animation from "../../../utils/aos";
+import { useEffect } from "react";
 
-export default function CardActivity({ activity, handleDelete }) {
+export default function CardActivity({ activity, handleDelete, index }) {
+  useEffect(() => {
+    Animation();
+  }, []);
   return (
-    <div className="card card-activity m-3 rounded">
+    <div
+      className="card card-activity m-3 rounded"
+      data-aos={index % 2 === 0 ? "fade-up" : "fade-down"}
+      data-aos-delay={(index % 6) * 100}
+    >
       <div className="card-img-top">
         <img
           src={activity.imageUrls[0]}
