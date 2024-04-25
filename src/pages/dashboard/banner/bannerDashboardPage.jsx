@@ -8,6 +8,8 @@ import Pagination from "../../../component/Elements/Pagination/Pagination";
 import { useDispatch } from "react-redux";
 import { openModalDelete } from "../../../redux/slice/ModalDeleteSlice";
 import ModalDelete from "../../../component/Elements/Modals/ModalDelete/ModalDelete";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function BannerDashboardPage() {
   const { getData } = useGetData();
   const [banners, setBanners] = useState([]);
@@ -29,6 +31,7 @@ export default function BannerDashboardPage() {
     const res = await deleteData(`delete-banner/${id}`);
     if (res.status === 200) {
       getData("banners").then((res) => setBanners(res.data.data));
+      toast.success("Banner has been deleted");
     }
   };
 
@@ -68,6 +71,17 @@ export default function BannerDashboardPage() {
         </div>
       </div>
       <ModalDelete onConfirm={deleteBanner} id={bannerId} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Layout>
   );
 }
