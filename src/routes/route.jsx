@@ -20,6 +20,7 @@ import LoginPage from "../pages/login/loginPage";
 import ProfilePage from "../pages/profile/ProfilePage";
 import PromoPage from "../pages/promo/PromoPage";
 import RegisterPage from "../pages/register/RegisterPage";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 export const routeList = [
   {
@@ -52,12 +53,20 @@ export const routeList = [
   },
   {
     path: "/profile",
-    element: <ProfilePage />,
+    element: (
+      <ProtectedRoute>
+        <ProfilePage />
+      </ProtectedRoute>
+    ),
   },
 
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: "user",
