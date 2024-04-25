@@ -5,6 +5,11 @@ import { useEffect, useState } from "react";
 import CardPromo from "../../../component/Fragments/DashboardCardPromo/CardPromo";
 import useDelete from "../../../hooks/useDelete";
 import Pagination from "../../../component/Elements/Pagination/Pagination";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ModalDelete from "../../../component/Elements/Modals/ModalDelete/ModalDelete";
+import { openModalDelete } from "../../../redux/slice/ModalDeleteSlice";
+import { useDispatch } from "react-redux";
 
 export default function PromoDashboardPage() {
   const { getData } = useGetData();
@@ -15,17 +20,26 @@ export default function PromoDashboardPage() {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const totalPages = Math.ceil(promos.length / itemsPerPage);
+  const dispatch = useDispatch();
+  const [promoId, setPromoId] = useState(null);
 
   const handleDelete = async (id) => {
+    setPromoId(id);
+    dispatch(openModalDelete());
+  };
+
+  const deletePromo = async (id) => {
     try {
       const res = await deleteData(`delete-promo/${id}`);
       if (res.status === 200) {
         getData("promos").then((res) => setPromos(res.data.data));
+        toast.success(res.data.message);
       }
     } catch (error) {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getData("promos").then((res) => setPromos(res.data.data));
   }, []);
@@ -63,6 +77,18 @@ export default function PromoDashboardPage() {
           <Pagination pages={totalPages} page={page} setPage={setPage} />
         </div>
       </div>
+      <ModalDelete id={promoId} onConfirm={deletePromo} />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Layout>
   );
 }
