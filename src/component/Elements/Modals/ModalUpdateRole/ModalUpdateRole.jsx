@@ -10,7 +10,7 @@ export default function ModalUpdateRole({ user, onConfirm }) {
       role: selectValue,
     };
 
-    onConfirm(user.id, role);
+    onConfirm(user, role);
     dispatch(closeModalUpdateRole());
   };
 

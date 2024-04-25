@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { openModalUpdateRole } from "../../../redux/slice/ModalUpdateRoleSlice";
 import useUpdate from "../../../hooks/useUpdate";
 import Pagination from "../../../component/Elements/Pagination/Pagination";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function UserDashboardPage() {
   const { userLog } = useAuth();
@@ -19,20 +21,17 @@ export default function UserDashboardPage() {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const totalPages = Math.ceil(users.length / itemsPerPage);
-  console.log(totalPages);
 
   const handleUpdateRole = (user) => {
     setUser(user);
     dispatch(openModalUpdateRole());
-    console.log(user);
   };
 
-  const updateRole = async (id, role) => {
-    try {
-      await update(`update-user-role/${id}`, role);
+  const updateRole = async (user, role) => {
+    const res = await update(`update-user-role/${user.id}`, role);
+    if (res.status === 200) {
       userLog("all-user", setUsers);
-    } catch (error) {
-      console.log(error);
+      toast.success(`${user.name} role has been updated to ${role.role}`);
     }
   };
 
@@ -59,6 +58,18 @@ export default function UserDashboardPage() {
           <Pagination page={page} setPage={setPage} pages={totalPages} />
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        theme="light"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Layout>
   );
 }
