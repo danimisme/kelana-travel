@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { closeModalDelete } from "../../../../redux/slice/ModalDeleteSlice";
 
 export default function ModalDelete() {
-  const [isOpen, setIsOpen] = useState(true);
+  const isOpen = useSelector((state) => state.modalDelete.isOpen);
+  const dispatch = useDispatch();
   return (
     <div
       className={`modal_container ${isOpen ? "show_modal" : " hide_modal"} row`}
@@ -23,7 +25,11 @@ export default function ModalDelete() {
         </div>
         <div className="modal_footer d-flex gap-3 mt-3 justify-content-end">
           <button className="default-button btn-orange ">Confirm</button>
-          <button className="default-button" style={{ backgroundColor: "red" }}>
+          <button
+            className="default-button"
+            style={{ backgroundColor: "red" }}
+            onClick={() => dispatch(closeModalDelete())}
+          >
             Cancel
           </button>
         </div>
