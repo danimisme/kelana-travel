@@ -31,7 +31,7 @@ export default function BannerDashboardPage() {
     const res = await deleteData(`delete-banner/${id}`);
     if (res.status === 200) {
       getData("banners").then((res) => setBanners(res.data.data));
-      toast.success("Banner has been deleted");
+      toast.success(res.data.message);
     }
   };
 
