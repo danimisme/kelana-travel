@@ -23,6 +23,7 @@ export default function RegisterPage() {
         }, 1500);
         toast.success("Register Success");
       }
+      return res;
     } catch (error) {
       console.log(error);
     }
