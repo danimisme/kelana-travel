@@ -15,6 +15,7 @@ export default function CardUser({ user, index, handleUpdateRole }) {
       }`}
       data-aos="fade-up"
       data-aos-delay={(index % 8) * 100}
+      data-aos-once="true"
     >
       <div className="w-100 d-flex justify-content-center py-3">
         <img

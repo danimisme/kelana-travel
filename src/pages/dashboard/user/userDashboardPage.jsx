@@ -30,6 +30,7 @@ export default function UserDashboardPage() {
   const updateRole = async (user, role) => {
     const res = await update(`update-user-role/${user.id}`, role);
     if (res.status === 200) {
+      setUsers([]);
       userLog("all-user", setUsers);
       toast.success(`${user.name} role has been updated to ${role.role}`);
     }
@@ -43,7 +44,9 @@ export default function UserDashboardPage() {
       <ModalUpdateRole user={user} onConfirm={updateRole} />
       <div className="mt-5 container-lg">
         <div className="py-5">
-          <h1>User Dashboard</h1>
+          <h1 className="text-center mb-3 text-orange">
+            <i className="bi bi-person-circle me-2"></i>User Dashboard
+          </h1>
           <div className="row">
             {users.slice(startIndex, endIndex).map((user, index) => (
               <div className="col-10 col-md-4 col-lg-3 mx-auto" key={user.id}>
@@ -59,8 +62,8 @@ export default function UserDashboardPage() {
         </div>
       </div>
       <ToastContainer
-        position="top-center"
-        theme="light"
+        position="bottom-right"
+        theme="colored"
         autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
