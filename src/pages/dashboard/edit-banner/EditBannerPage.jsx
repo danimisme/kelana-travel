@@ -4,6 +4,8 @@ import useGetData from "../../../hooks/useGetData";
 import useUpdate from "../../../hooks/useUpdate";
 import Layout from "../../../layouts/Layout";
 import FormBanner from "../../../component/Fragments/FormBanner/FormBanner";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function EditBannerPage() {
   const { getData } = useGetData();
@@ -17,11 +19,12 @@ export default function EditBannerPage() {
   }, []);
 
   const handleUpdateBanner = async (data) => {
-    try {
-      await update(`update-banner/${params.id}`, data);
-      navigate("/dashboard/banner");
-    } catch (error) {
-      console.log(error);
+    const res = await update(`update-banner/${params.id}`, data);
+    if (res.status === 200) {
+      toast.success(res.data.message);
+      setTimeout(() => {
+        navigate("/dashboard/banner");
+      }, 1500);
     }
   };
 
@@ -32,6 +35,18 @@ export default function EditBannerPage() {
           <FormBanner banner={banner} onSubmit={handleUpdateBanner} />
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        theme="light"
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Layout>
   );
 }
