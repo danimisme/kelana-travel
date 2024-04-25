@@ -5,6 +5,9 @@ import CardBanner from "../../../component/Fragments/DashboardCardBanner/CardBan
 import { Link } from "react-router-dom";
 import useDelete from "../../../hooks/useDelete";
 import Pagination from "../../../component/Elements/Pagination/Pagination";
+import { useDispatch } from "react-redux";
+import { openModalDelete } from "../../../redux/slice/ModalDeleteSlice";
+import ModalDelete from "../../../component/Elements/Modals/ModalDelete/ModalDelete";
 export default function BannerDashboardPage() {
   const { getData } = useGetData();
   const [banners, setBanners] = useState([]);
@@ -14,15 +17,18 @@ export default function BannerDashboardPage() {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const totalPages = Math.ceil(banners.length / itemsPerPage);
+  const dispatch = useDispatch();
+  const [bannerId, setBannerId] = useState(null);
 
-  const handleDelete = async (id) => {
-    try {
-      const res = await deleteData(`delete-banner/${id}`);
-      if (res.status === 200) {
-        getData("banners").then((res) => setBanners(res.data.data));
-      }
-    } catch (error) {
-      console.log(error);
+  const handleDelete = (id) => {
+    setBannerId(id);
+    dispatch(openModalDelete());
+  };
+
+  const deleteBanner = async (id) => {
+    const res = await deleteData(`delete-banner/${id}`);
+    if (res.status === 200) {
+      getData("banners").then((res) => setBanners(res.data.data));
     }
   };
 
@@ -61,6 +67,7 @@ export default function BannerDashboardPage() {
           <Pagination page={page} setPage={setPage} pages={totalPages} />
         </div>
       </div>
+      <ModalDelete onConfirm={deleteBanner} id={bannerId} />
     </Layout>
   );
 }
