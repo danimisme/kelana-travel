@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import RegisterForm from "../../component/Fragments/RegisterForm/RegisterForm";
 import useAuth from "../../hooks/useAuth";
 import "./RegisterPage.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
@@ -10,7 +12,10 @@ export default function RegisterPage() {
     try {
       const res = await auth("register", data);
       if (res.status === 200) {
-        navigate("/login");
+        setTimeout(() => {
+          navigate("/login");
+        }, 1500);
+        toast.success("Register Success");
       }
     } catch (error) {
       console.log(error);
@@ -38,6 +43,18 @@ export default function RegisterPage() {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        theme="light"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </main>
   );
 }
