@@ -22,25 +22,7 @@ export default function DetailActivityPage() {
 
   return (
     <Layout>
-      <div className="container-lg mt-5 py-3">
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <Link to="/" className="text-success">
-                Home
-              </Link>
-            </li>
-            <li className="breadcrumb-item">
-              <Link to="/activity " className="text-success">
-                Activity
-              </Link>
-            </li>
-            <li className="breadcrumb-item active" aria-current="page">
-              {activity.title}
-            </li>
-          </ol>
-        </nav>
-      </div>
+      <div className="container-lg mt-5 py-3"></div>
       <div className="container-lg">
         <h1 className={` text-center`}>{activity.title}</h1>
         <div className="row">
