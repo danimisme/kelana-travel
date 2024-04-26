@@ -45,8 +45,9 @@ export default function Navbar() {
   return (
     <nav className={`navbar fixed-top navbar-expand-lg  ${navStyle} nav`}>
       <div className="container-lg justify-content-between align-items-center">
-        <div className="navbar-brand">
-          <h2 className="m-0">Kelana</h2>
+        <div className="navbar-brand d-flex align-items-center justify-content-center gap-2">
+          <img src="/images/logo.png" style={{ width: "50px" }} alt="logo" />
+          <h2 className="m-0 orange-dark">Kelana</h2>
         </div>
 
         <div className="align-items-end text-end ">
@@ -68,24 +69,32 @@ export default function Navbar() {
         >
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item ms-lg-3">
-              <Link to="/" className="nav-link active" aria-current="page">
+              <Link
+                to="/"
+                className="nav-link orange-dark "
+                aria-current="page"
+              >
                 Home
               </Link>
             </li>
-            <li className="nav-item ms-lg-3">
-              <Link to="/activity" className="nav-link">
+            <li className="nav-item  ms-lg-3">
+              <Link to="/activity" className="nav-link orange-dark ">
                 Activity
               </Link>
             </li>
 
-            <li className="nav-item ms-lg-3">
-              <Link to="/promo" className="nav-link" aria-disabled="true">
+            <li className="nav-item  ms-lg-3">
+              <Link
+                to="/promo"
+                className="nav-link orange-dark "
+                aria-disabled="true"
+              >
                 Promo
               </Link>
             </li>
             {user?.role === "admin" && (
-              <li className="nav-item ms-lg-3">
-                <Link to="/dashboard/user" className="nav-link">
+              <li className="nav-item ms-lg-3 ">
+                <Link to="/dashboard/user" className="nav-link orange-dark ">
                   Dashboard
                 </Link>
               </li>
@@ -112,16 +121,25 @@ export default function Navbar() {
                   height={35}
                   className="img-fluid rounded-circle me-2 profile_picture "
                 />
-                <p className="m-0 text-dark">{user.name}</p>
+                <p className="m-0 orange-dark">{user.name}</p>
               </Link>
-              <ul className="dropdown-menu dropdown-menu-end">
+              <ul
+                className="dropdown-menu dropdown-menu-end"
+                style={{ backgroundColor: "#ffbb70" }}
+              >
                 <li>
-                  <Link to="/profile" className="dropdown-item">
+                  <Link
+                    to="/profile"
+                    className="dropdown-item text-center fw-bold"
+                  >
                     Profile
                   </Link>
                 </li>
                 <li>
-                  <button onClick={logout} className="dropdown-item">
+                  <button
+                    onClick={logout}
+                    className="dropdown-item  text-center fw-bold"
+                  >
                     Logout
                   </button>
                 </li>
