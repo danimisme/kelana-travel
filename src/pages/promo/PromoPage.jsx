@@ -38,8 +38,8 @@ export default function PromoPage() {
           </div>
         </div>
         <div className="row">
-          {promos.slice(startIndex, endIndex).map((promo) => (
-            <CardPromo promo={promo} key={promo.id} />
+          {promos.slice(startIndex, endIndex).map((promo, index) => (
+            <CardPromo promo={promo} key={promo.id} index={index} />
           ))}
         </div>
         <Pagination setPage={setPage} page={page} pages={totalPages} />

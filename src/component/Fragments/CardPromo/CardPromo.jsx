@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
+import Animation from "../../../utils/aos";
+import { useEffect } from "react";
 
-export default function CardPromo({ promo }) {
+export default function CardPromo({ promo, index }) {
+  useEffect(() => {
+    Animation();
+  }, []);
   return (
-    <div className="col-md-3 col-sm-6 p-3">
+    <div
+      className="col-md-3 col-sm-6 p-3"
+      data-aos="fade-up"
+      data-aos-delay={index * 100}
+    >
       <Link to={`/promo/${promo.id}`} className="text-decoration-none">
         <div className={`card_promo card d-flex flex-column h-100`}>
           <img
