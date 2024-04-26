@@ -1,9 +1,19 @@
 import { Link } from "react-router-dom";
 import "./CardActivity.css";
-export default function CardActivity({ activity }) {
+import Animation from "../../../utils/aos";
+import { useEffect } from "react";
+export default function CardActivity({ activity, index }) {
+  useEffect(() => {
+    Animation();
+  }, []);
   return (
     <Link to={`/activity/${activity.id} `} className="text-decoration-none">
-      <div className="card" style={{ backgroundColor: "#FFC47E" }}>
+      <div
+        className="card"
+        style={{ backgroundColor: "#FFC47E" }}
+        data-aos="fade-up"
+        data-aos-delay={(index % 6) * 100}
+      >
         <img
           src={activity.imageUrls[0]}
           className={` img card-img-top`}
