@@ -32,7 +32,7 @@ export default function ActivityCarousel() {
       <div className={`header`}>
         <div className="d-flex justify-content-start align-items-baseline">
           <div>
-            <i className="bi bi-airplane-fill fs-2 me-2 text-success"></i>
+            <i className="bi bi-airplane-fill fs-2 me-2 text-orange"></i>
           </div>
           <div className="d-flex flex-column ">
             <h3 className="m-0 fw-bold">Explore All Activities</h3>
@@ -69,7 +69,7 @@ export default function ActivityCarousel() {
 
       <div className="d-flex justify-content-center">
         <Link to="/activity">
-          <button className="btn btn-success">
+          <button className="default-button btn-orange">
             See All Activities <i className="bi bi-arrow-right"></i>
           </button>
         </Link>
