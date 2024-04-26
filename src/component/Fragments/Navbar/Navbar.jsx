@@ -109,7 +109,7 @@ export default function Navbar() {
             <div className="nav-link dropdown-center ">
               <Link
                 to="/"
-                className="nav-link dropdown-toggle d-flex align-items-center"
+                className="nav-link dropdown-toggle d-flex align-items-center orange-dark gap-2"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -121,25 +121,26 @@ export default function Navbar() {
                   height={35}
                   className="img-fluid rounded-circle me-2 profile_picture "
                 />
-                <p className="m-0 orange-dark">{user.name}</p>
+                <p className="m-0 orange-dark fw-semibold">{user.name}</p>
               </Link>
               <ul
                 className="dropdown-menu dropdown-menu-end"
                 style={{ backgroundColor: "#ffbb70" }}
               >
-                <li>
+                <li className="px-2">
                   <Link
                     to="/profile"
-                    className="dropdown-item text-center fw-bold"
+                    className="dropdown-item fw-bold rounded "
                   >
-                    Profile
+                    <i className="bi bi-person-circle ms-1"></i> Profile
                   </Link>
                 </li>
-                <li>
+                <li className="px-2">
                   <button
                     onClick={logout}
-                    className="dropdown-item  text-center fw-bold"
+                    className="dropdown-item  fw-bold rounded"
                   >
+                    <i className="bi bi-box-arrow-in-right me-1 fs-5 "></i>
                     Logout
                   </button>
                 </li>
