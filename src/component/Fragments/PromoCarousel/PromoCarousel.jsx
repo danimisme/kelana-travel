@@ -86,7 +86,7 @@ export default function PromoCarousel() {
       </AliceCarousel>
       <div className="d-flex justify-content-center">
         <Link to="/promo">
-          <button className="btn btn-orange">
+          <button className="default-button btn-orange">
             See All Promo <i className="bi bi-arrow-right"></i>
           </button>
         </Link>
