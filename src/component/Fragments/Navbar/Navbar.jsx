@@ -166,8 +166,10 @@ export default function Navbar() {
               </ul>
             </div>
           ) : (
-            <Link to="/login" className="btn btn-outline-dark btn-sm ">
-              <i className="bi bi-person-fill"></i> Login
+            <Link to="/login">
+              <button className="default-button btn-orange mb-3">
+                <i className="bi bi-person-fill"></i> Login
+              </button>
             </Link>
           )}
         </div>
