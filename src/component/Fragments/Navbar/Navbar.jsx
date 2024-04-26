@@ -125,7 +125,7 @@ export default function Navbar() {
           id="navbarSupportedContent"
         >
           {user?.name ? (
-            <div className=" dropdown-center ">
+            <div className=" dropdown-center py-3 ">
               <Link
                 to="/"
                 className=" dropdown-toggle d-flex align-items-center orange-dark gap-2 text-decoration-none"
