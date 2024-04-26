@@ -1,6 +1,5 @@
 import useGetData from "../../hooks/useGetData";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Layout from "../../layouts/Layout";
 
