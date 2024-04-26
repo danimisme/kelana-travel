@@ -88,7 +88,7 @@ export default function ActivityPage() {
               No activities found
             </div>
           )}
-          {activities.map((activity) => (
+          {activities.slice(startIndex, endIndex).map((activity) => (
             <div className="col-md-6 col-lg-4 p-3" key={activity.id}>
               <CardActivity activity={activity} />
             </div>
