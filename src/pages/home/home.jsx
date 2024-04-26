@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ActivityCarousel from "../../component/Fragments/ActivityCarousel/ActivityCarousel";
 import BannerCarousel from "../../component/Fragments/BannerCarousel/BannerCarousel";
 import CategoryCarousel from "../../component/Fragments/CategoryCarousel/CategortCarousel";
@@ -9,13 +10,18 @@ export default function Home() {
   return (
     <Layout>
       <main className="mt-5 py-5">
-        <div className="row d-flex align-items-center justify-content-center my-5">
-          <div className="col-lg-4  col-10 ">
-            <h1 className=" fs-1 fw-bold">
+        <div className="row d-flex align-items-center justify-content-center my-5 header-section">
+          <div className="col-lg-5  col-10 text-header ">
+            <h1 className=" fs-1 fw-bold text-orange  m-3">
               Adventure to Explore <br /> Through the Beautiful World
             </h1>
+            <Link to="/activity" className="mb-3">
+              <button className="default-button btn-orange m-3">
+                Explore Now<i className="bi bi-arrow-right ms-2"></i>
+              </button>
+            </Link>
           </div>
-          <div className="col-lg-5 col-10">
+          <div className="col-lg-5 col-10 banner-container">
             <BannerCarousel />
           </div>
         </div>
