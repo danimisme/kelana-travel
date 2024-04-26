@@ -29,7 +29,7 @@ export default function CategoryCarousel() {
     <div className={`categories mt-3 container-fluid `}>
       <div className="d-flex justify-content-start align-items-baseline p-3">
         <div>
-          <i className="bi bi-geo-alt-fill fs-2 me-2 text-success"></i>
+          <i className="bi bi-geo-alt-fill fs-2 me-2 text-orange"></i>
         </div>
         <div>
           <h3 className="m-0 fw-bold">Find What You Love</h3>
