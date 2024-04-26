@@ -3,7 +3,7 @@ import "./CardActivity.css";
 export default function CardActivity({ activity }) {
   return (
     <Link to={`/activity/${activity.id} `} className="text-decoration-none">
-      <div className="card">
+      <div className="card" style={{ backgroundColor: "#FFC47E" }}>
         <img
           src={activity.imageUrls[0]}
           className={` img card-img-top`}
