@@ -3,6 +3,7 @@ import useGetData from "../../hooks/useGetData";
 import { useEffect, useState } from "react";
 import Layout from "../../layouts/Layout";
 import Pagination from "../../component/Elements/Pagination/Pagination";
+import "./PromoPage.css";
 
 export default function PromoPage() {
   const { getData } = useGetData();
@@ -17,16 +18,31 @@ export default function PromoPage() {
   });
   return (
     <Layout>
+      <div
+        className={`hero-promo d-flex align-items-center justify-content-center text-white `}
+      >
+        <h1 className={`text_shadow text-center fs-1 fw-bold`}>
+          Discover Your Dream Getaway <br /> with Our Exclusive Promotions!
+        </h1>
+      </div>
       <div className="mt-5 container-lg">
-        <div className="py-5">
-          <h1>Promo Page</h1>
-          <div className="row">
-            {promos.slice(startIndex, endIndex).map((promo) => (
-              <CardPromo promo={promo} key={promo.id} />
-            ))}
+        <div className="d-flex justify-content-start align-items-baseline px-3">
+          <div>
+            <i className="bi bi-ticket-perforated-fill me-2 fs-2 text-orange"></i>
           </div>
-          <Pagination setPage={setPage} page={page} pages={totalPages} />
+          <div className="d-flex flex-column">
+            <h3 className=" fw-bold m-0">Special Promo For You !</h3>
+            <p className="m-0 text-muted">
+              &quot;Exclusive Offer Just for You! Don&apos;t Miss Out!&quot;
+            </p>
+          </div>
         </div>
+        <div className="row">
+          {promos.slice(startIndex, endIndex).map((promo) => (
+            <CardPromo promo={promo} key={promo.id} />
+          ))}
+        </div>
+        <Pagination setPage={setPage} page={page} pages={totalPages} />
       </div>
     </Layout>
   );

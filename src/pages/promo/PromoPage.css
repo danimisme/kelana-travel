@@ -1,0 +1,7 @@
+.hero-promo {
+    background-image: url('/images/promo.jpg');
+    background-size: cover;
+    background-position:top;
+    background-repeat: no-repeat;
+    height: 600px;
+}
