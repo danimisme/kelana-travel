@@ -23,4 +23,37 @@
     transition: all 0.5s ease;
 }
 
+.nav-link {
+    font-weight: 600;
+    transition: all 0.5s ease;
+}
 
+
+.nav-link::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #e34d00;
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #bb1a08;
+}
+
+.nav-link.on::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #e30000;
+}
+
+.nav-link.on{
+    color: #e30000;
+}

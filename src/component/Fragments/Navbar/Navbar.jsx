@@ -1,5 +1,5 @@
 import useAuth from "../../../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,8 @@ export default function Navbar() {
   const [navStyle, setNavStyle] = useState("");
   const user = useSelector((state) => state.userLogged.user);
   const dispatch = useDispatch();
+  const location = useLocation();
+  const { pathname } = location;
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -46,7 +48,12 @@ export default function Navbar() {
     <nav className={`navbar fixed-top navbar-expand-lg  ${navStyle} nav`}>
       <div className="container-lg justify-content-between align-items-center">
         <div className="navbar-brand d-flex align-items-center justify-content-center gap-2">
-          <img src="/images/logo.png" style={{ width: "50px" }} alt="logo" />
+          <img
+            src="/images/logo.png"
+            style={{ width: "50px" }}
+            className="img-fluid py-2"
+            alt="logo"
+          />
           <h2 className="m-0 orange-dark">Kelana</h2>
         </div>
 
@@ -71,14 +78,19 @@ export default function Navbar() {
             <li className="nav-item ms-lg-3">
               <Link
                 to="/"
-                className="nav-link orange-dark "
+                className={`nav-link orange-dark ${pathname === "/" && "on"}`}
                 aria-current="page"
               >
                 Home
               </Link>
             </li>
             <li className="nav-item  ms-lg-3">
-              <Link to="/activity" className="nav-link orange-dark ">
+              <Link
+                to="/activity"
+                className={`nav-link orange-dark ${
+                  pathname === "/activity" && "on"
+                }`}
+              >
                 Activity
               </Link>
             </li>
@@ -86,7 +98,9 @@ export default function Navbar() {
             <li className="nav-item  ms-lg-3">
               <Link
                 to="/promo"
-                className="nav-link orange-dark "
+                className={`nav-link orange-dark ${
+                  pathname === "/promo" && "on"
+                }`}
                 aria-disabled="true"
               >
                 Promo
@@ -94,7 +108,12 @@ export default function Navbar() {
             </li>
             {user?.role === "admin" && (
               <li className="nav-item ms-lg-3 ">
-                <Link to="/dashboard/user" className="nav-link orange-dark ">
+                <Link
+                  to="/dashboard/user"
+                  className={`nav-link orange-dark ${
+                    pathname.startsWith("/dashboard") && "on"
+                  }`}
+                >
                   Dashboard
                 </Link>
               </li>
@@ -106,10 +125,10 @@ export default function Navbar() {
           id="navbarSupportedContent"
         >
           {user?.name ? (
-            <div className="nav-link dropdown-center ">
+            <div className=" dropdown-center ">
               <Link
                 to="/"
-                className="nav-link dropdown-toggle d-flex align-items-center orange-dark gap-2"
+                className=" dropdown-toggle d-flex align-items-center orange-dark gap-2 text-decoration-none"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -121,7 +140,7 @@ export default function Navbar() {
                   height={35}
                   className="img-fluid rounded-circle me-2 profile_picture "
                 />
-                <p className="m-0 orange-dark fw-semibold">{user.name}</p>
+                <p className="m-0 orange-dark fw-semibold ">{user.name}</p>
               </Link>
               <ul
                 className="dropdown-menu dropdown-menu-end"
