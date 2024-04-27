@@ -15,9 +15,9 @@ export default function Home() {
   return (
     <Layout>
       <main className="mt-5 py-5">
-        <div className="row d-flex align-items-center justify-content-center my-5 header-section">
+        <div className="row d-flex align-items-center justify-content-center  header-section">
           <div className="col-lg-5  col-10 text-header " data-aos="fade-right">
-            <h1 className=" fs-1 fw-bold text-orange  m-3">
+            <h1 className="  fw-bold text-orange  m-3">
               Adventure to Explore <br /> Through the Beautiful World
             </h1>
             <Link to="/activity" className="mb-3">

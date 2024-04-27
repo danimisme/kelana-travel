@@ -21,8 +21,7 @@
 .banner {
     width: 100%;
     margin: auto;
-    padding-left: 2%;
-    padding-top: 5px;
+    padding: 5px 2%;
 }
 
 .banner h3 {
@@ -44,5 +43,14 @@
 @media screen and (max-width: 800px) {
     .banner h3 {
         display: none;
+    }
+
+    .banner img {
+        aspect-ratio:1;
+    }
+
+    .banner {
+        display: flex;
+        justify-content: center;
     }
 }
