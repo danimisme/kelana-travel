@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import DashboardLayout from "../layouts/DashboardLayout";
 import ActivityPage from "../pages/activity/ActivityPage";
 import ActivityDashboardPage from "../pages/dashboard/activity/ActivityDashboardPage";
@@ -61,65 +62,185 @@ export const routeList = [
   },
 
   {
-    path: "/dashboard",
+    path: "/dashboard/user",
     element: (
       <ProtectedRoute>
         <DashboardLayout />
+        <UserDashboardPage />
       </ProtectedRoute>
     ),
-    children: [
-      {
-        path: "user",
-        element: <UserDashboardPage />,
-      },
-      {
-        path: "banner",
-        element: <BannerDashboardPage />,
-      },
-      {
-        path: "banner/edit-banner/:id",
-        element: <EditBannerPage />,
-      },
-      {
-        path: "banner/create-banner",
-        element: <CreateBannerPage />,
-      },
-      {
-        path: "promo",
-        element: <PromoDashboardPage />,
-      },
-      {
-        path: "promo/edit-promo/:id",
-        element: <EditPromoPage />,
-      },
-      {
-        path: "promo/create-promo",
-        element: <CreatePromoPage />,
-      },
-      {
-        path: "category",
-        element: <CategoryDashboardPage />,
-      },
-      {
-        path: "category/edit-category/:id",
-        element: <EditCategoryPage />,
-      },
-      {
-        path: "category/create-category",
-        element: <CreateCategoryPage />,
-      },
-      {
-        path: "activity",
-        element: <ActivityDashboardPage />,
-      },
-      {
-        path: "activity/edit-activity/:id",
-        element: <EditActivityPage />,
-      },
-      {
-        path: "activity/create-activity",
-        element: <CreateActivityPage />,
-      },
-    ],
   },
+  {
+    path: "/dashboard/banner",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+        <BannerDashboardPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/dashboard/banner/edit-banner/:id",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+        <EditBannerPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/dashboard/banner/create-banner",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+        <CreateBannerPage />
+      </ProtectedRoute>
+    ),
+  },
+
+  {
+    path: "/dashboard/promo",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+        <PromoDashboardPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/dashboard/promo/edit-promo/:id",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+        <EditPromoPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/dashboard/promo/create-promo",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+        <CreatePromoPage />
+      </ProtectedRoute>
+    ),
+  },
+
+  {
+    path: "/dashboard/category",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+        <CategoryDashboardPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/dashboard/category/edit-category/:id",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+        <EditCategoryPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/dashboard/category/create-category",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+        <CreateCategoryPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/dashboard/activity",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+        <ActivityDashboardPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/dashboard/activity/edit-activity/:id",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+        <EditActivityPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/dashboard/activity/create-activity",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+        <CreateActivityPage />
+      </ProtectedRoute>
+    ),
+  },
+
+  // {
+  //   path: "/dashboard",
+  //   element: (
+  //     <ProtectedRoute>
+  //       <DashboardLayout />
+  //     </ProtectedRoute>
+  //   ),
+  //   children: [
+  //     {
+  //       path: "user",
+  //       element: <UserDashboardPage />,
+  //     },
+  //     {
+  //       path: "banner",
+  //       element: <BannerDashboardPage />,
+  //     },
+  //     {
+  //       path: "banner/edit-banner/:id",
+  //       element: <EditBannerPage />,
+  //     },
+  //     {
+  //       path: "banner/create-banner",
+  //       element: <CreateBannerPage />,
+  //     },
+  //     {
+  //       path: "promo",
+  //       element: <PromoDashboardPage />,
+  //     },
+  //     {
+  //       path: "promo/edit-promo/:id",
+  //       element: <EditPromoPage />,
+  //     },
+  //     {
+  //       path: "promo/create-promo",
+  //       element: <CreatePromoPage />,
+  //     },
+  //     {
+  //       path: "category",
+  //       element: <CategoryDashboardPage />,
+  //     },
+  //     {
+  //       path: "category/edit-category/:id",
+  //       element: <EditCategoryPage />,
+  //     },
+  //     {
+  //       path: "category/create-category",
+  //       element: <CreateCategoryPage />,
+  //     },
+  //     {
+  //       path: "activity",
+  //       element: <ActivityDashboardPage />,
+  //     },
+  //     {
+  //       path: "activity/edit-activity/:id",
+  //       element: <EditActivityPage />,
+  //     },
+  //     {
+  //       path: "activity/create-activity",
+  //       element: <CreateActivityPage />,
+  //     },
+  //   ],
+  // },
 ];
