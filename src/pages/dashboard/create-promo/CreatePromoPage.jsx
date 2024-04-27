@@ -10,11 +10,13 @@ export default function CreatePromoPage() {
   const { create } = useCreate();
   const handleCreatePromo = async (data) => {
     const res = await create("create-promo", data);
-    toast.success(res.data.message);
     if (res.status === 200) {
+      toast.success(res.data.message);
       setTimeout(() => {
         navigate("/dashboard/promo");
       }, 1500);
+    } else {
+      toast.error(res.response.data.message);
     }
   };
 

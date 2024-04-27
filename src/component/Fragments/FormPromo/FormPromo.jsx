@@ -70,6 +70,14 @@ export default function FormPromo({ promo, onSubmit }) {
       minimum_claim_price: Number(e.target.minimum_claim_price.value),
     };
 
+    if (!promoData.imageUrl) {
+      setMessage("Please upload image");
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+      return;
+    }
+
     for (const key in promoData) {
       if (!promoData[key]) {
         setMessage("Failed to create promo, all fields are required");

@@ -29,14 +29,12 @@ export default function PromoDashboardPage() {
   };
 
   const deletePromo = async (id) => {
-    try {
-      const res = await deleteData(`delete-promo/${id}`);
-      if (res.status === 200) {
-        getData("promos").then((res) => setPromos(res.data.data));
-        toast.success(res.data.message);
-      }
-    } catch (error) {
-      console.log(error);
+    const res = await deleteData(`delete-promo/${id}`);
+    if (res.status === 200) {
+      getData("promos").then((res) => setPromos(res.data.data));
+      toast.success(res.data.message);
+    } else {
+      toast.error(res.response.data.message);
     }
   };
 

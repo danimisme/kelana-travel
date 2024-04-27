@@ -26,6 +26,8 @@ export default function EditPromoPage() {
       setTimeout(() => {
         navigate("/dashboard/promo");
       }, 1500);
+    } else {
+      toast.error(res.response.data.message);
     }
   };
 
