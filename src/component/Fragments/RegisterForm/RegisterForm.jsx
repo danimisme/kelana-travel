@@ -62,7 +62,7 @@ export default function RegisterForm({ onSubmit }) {
       phoneNumber: e.target.phoneNumber.value,
     };
 
-    if (userData.password.length <= 6) {
+    if (userData.password.length < 6) {
       setMessage("Password must be at least 6 characters");
       setTimeout(() => {
         setMessage(null);
