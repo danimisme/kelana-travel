@@ -98,6 +98,15 @@ export default function FormActivity({ activity, onSubmit }) {
       province: e.target.province.value,
       location_maps: e.target.location_maps.value,
     };
+
+    if (dataActivity.imageUrls.length === 0) {
+      setMessage("Please upload image");
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+      return;
+    }
+
     for (const key in dataActivity) {
       if (!dataActivity[key]) {
         setMessage("Please input all fields");

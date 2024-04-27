@@ -10,11 +10,13 @@ export default function CreateActivityPage() {
 
   const handleCreate = async (data) => {
     const res = await create("create-activity", data);
-    toast.success(res.data.message);
     if (res.status === 200) {
-      navigate("/dashboard/activity");
+      toast.success(res.data.message);
+      setTimeout(() => {
+        navigate("/dashboard/activity");
+      }, 1500);
     } else {
-      toast.error(res.data.message);
+      toast.error(res.response.data.message);
     }
   };
   return (

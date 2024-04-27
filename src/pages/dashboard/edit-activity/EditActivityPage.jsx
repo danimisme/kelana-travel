@@ -27,7 +27,7 @@ export default function EditActivityPage() {
         navigate("/dashboard/activity");
       }, 1500);
     } else {
-      toast.error(res.data.message);
+      toast.error(res.response.data.message);
     }
   };
 
