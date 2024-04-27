@@ -16,7 +16,7 @@ export default function useUpload() {
       );
       return res;
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
   return { upload };
