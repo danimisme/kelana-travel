@@ -53,6 +53,13 @@ export default function FormBanner({ banner, onSubmit }) {
       name: e.target.name.value,
       imageUrl: bannerImageUrl,
     };
+    if (!bannerData.imageUrl) {
+      setMessage("Please upload an image");
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+      return;
+    }
     for (const key in bannerData) {
       if (!bannerData[key]) {
         setMessage("Please input all fields");
