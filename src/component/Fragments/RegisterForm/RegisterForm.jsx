@@ -62,8 +62,24 @@ export default function RegisterForm({ onSubmit }) {
       phoneNumber: e.target.phoneNumber.value,
     };
 
+    if (userData.password.length <= 6) {
+      setMessage("Password must be at least 6 characters");
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+      return;
+    }
+
     if (userData.password !== userData.passwordRepeat) {
       setMessage("Password and Repeat Password does not match");
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+      return;
+    }
+
+    if (!profilePictureUrl) {
+      setMessage("Please upload your profile picture");
       setTimeout(() => {
         setMessage(null);
       }, 3000);
