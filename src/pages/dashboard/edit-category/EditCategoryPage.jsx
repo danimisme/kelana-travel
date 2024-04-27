@@ -4,6 +4,8 @@ import useGetData from "../../../hooks/useGetData";
 import { useEffect, useState } from "react";
 import FormCategory from "../../../component/Fragments/FormCategory/FormCategory";
 import useUpdate from "../../../hooks/useUpdate";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function EditCategoryPage() {
   const params = useParams();
@@ -19,11 +21,14 @@ export default function EditCategoryPage() {
   }, []);
 
   const handleUpdateCategory = async (data) => {
-    try {
-      await update(`update-category/${params.id}`, data);
-      navigate("/dashboard/category");
-    } catch (error) {
-      console.log(error);
+    const res = await update(`update-category/${params.id}`, data);
+    if (res.status === 200) {
+      toast.success(res.data.message);
+      setTimeout(() => {
+        navigate("/dashboard/category");
+      }, 1500);
+    } else {
+      toast.error(res.response.data.message);
     }
   };
   return (
@@ -33,6 +38,17 @@ export default function EditCategoryPage() {
           <FormCategory category={categories} onSubmit={handleUpdateCategory} />
         </div>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </Layout>
   );
 }

@@ -31,14 +31,12 @@ export default function CategoryDashboardPage() {
   };
 
   const deleteBanner = async (id) => {
-    try {
-      const res = await deleteData(`delete-category/${id}`);
-      if (res.status === 200) {
-        getData("categories").then((res) => setCategories(res.data.data));
-        toast.success(res.data.message);
-      }
-    } catch (error) {
-      console.log(error);
+    const res = await deleteData(`delete-category/${id}`);
+    if (res.status === 200) {
+      getData("categories").then((res) => setCategories(res.data.data));
+      toast.success(res.data.message);
+    } else {
+      toast.error(res.response.data.message);
     }
   };
 

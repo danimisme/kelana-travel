@@ -48,6 +48,13 @@ export default function FormCategory({ category, onSubmit }) {
       name: e.target.name.value,
       imageUrl: categoryImageUrl,
     };
+    if (!categoryData.name) {
+      setMessage("Please input all fields");
+      return;
+    } else if (!categoryImageUrl) {
+      setMessage("Please upload an image");
+      return;
+    }
 
     onSubmit(categoryData);
   };
