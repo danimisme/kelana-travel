@@ -5,6 +5,8 @@ import Layout from "../../layouts/Layout";
 import { toggleFormUser } from "../../redux/slice/FormUserSlice";
 import EditUserForm from "../../component/Fragments/FormUser/FormUser";
 import useUpdate from "../../hooks/useUpdate";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function ProfilePage() {
   const { userLog } = useAuth();
   const [user, setUser] = useState({});
@@ -17,13 +19,14 @@ export default function ProfilePage() {
   }, []);
 
   const updateUser = async (data) => {
-    try {
-      await update(`update-profile/`, data);
+    const res = await update(`update-profile/`, data);
+    if (res.status === 200) {
+      toast.success(res.data.message);
       userLog("user", (res) => {
         setUser(res);
       });
-    } catch (error) {
-      console.log(error);
+    } else {
+      toast.error(res.response.data.message);
     }
   };
 
@@ -69,6 +72,17 @@ export default function ProfilePage() {
         </div>
         <EditUserForm user={user} onSubmit={updateUser} />
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        theme="light"
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+      />
     </Layout>
   );
 }
