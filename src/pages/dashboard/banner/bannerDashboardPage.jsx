@@ -32,6 +32,8 @@ export default function BannerDashboardPage() {
     if (res.status === 200) {
       getData("banners").then((res) => setBanners(res.data.data));
       toast.success(res.data.message);
+    } else {
+      toast.error(res.response.data.message);
     }
   };
 

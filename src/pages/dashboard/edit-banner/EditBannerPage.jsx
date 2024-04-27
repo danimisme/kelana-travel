@@ -25,6 +25,9 @@ export default function EditBannerPage() {
       setTimeout(() => {
         navigate("/dashboard/banner");
       }, 1500);
+    } else {
+      toast.error(res.response.data.message);
+      console.log(res.response.data.message);
     }
   };
 

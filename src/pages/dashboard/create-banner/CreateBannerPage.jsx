@@ -15,6 +15,8 @@ export default function CreateBannerPage() {
       setTimeout(() => {
         navigate("/dashboard/banner");
       }, 1500);
+    } else {
+      toast.error(res.response.data.message);
     }
   };
 
