@@ -15,7 +15,7 @@ export default function useCreate() {
       );
       return res;
     } catch (error) {
-      console.log(error);
+      return error;
     }
   };
   return { create };
