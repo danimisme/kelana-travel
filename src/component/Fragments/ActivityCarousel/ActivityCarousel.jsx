@@ -60,9 +60,9 @@ export default function ActivityCarousel() {
         )}
         responsive={responsive}
       >
-        {activities.map((activity) => (
+        {activities.map((activity, index) => (
           <div key={activity.id} className="mx-3" onDragStart={handleDragStart}>
-            <CardActivity key={activity.id} activity={activity} />
+            <CardActivity key={activity.id} activity={activity} index={index} />
           </div>
         ))}
       </AliceCarousel>
