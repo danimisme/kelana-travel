@@ -7,6 +7,7 @@ import Layout from "../../layouts/Layout";
 import "./home.css";
 import Animation from "../../utils/aos";
 import { useEffect } from "react";
+import HeaderSection from "../../component/Fragments/HeaderSection/HeaderSection";
 
 export default function Home() {
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function Home() {
             <h1 className="  fw-bold text-orange  m-3">
               Adventure to Explore <br /> Through the Beautiful World
             </h1>
-            <p className="m-3 lead">
+            <p className="m-3 lead d-none d-md-block">
               Embark on an unforgettable adventure through breathtaking
               landscapes and captivating encounters in the beautiful world
               around you.
@@ -37,6 +38,9 @@ export default function Home() {
           >
             <BannerCarousel />
           </div>
+        </div>
+        <div className="container-lg my-5 py-5 px-4">
+          <HeaderSection />
         </div>
         <div
           className="container-lg my-5 py-5 promo_section"
