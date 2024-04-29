@@ -20,6 +20,11 @@ export default function Home() {
             <h1 className="  fw-bold text-orange  m-3">
               Adventure to Explore <br /> Through the Beautiful World
             </h1>
+            <p className="m-3 lead">
+              Embark on an unforgettable adventure through breathtaking
+              landscapes and captivating encounters in the beautiful world
+              around you.
+            </p>
             <Link to="/activity" className="mb-3">
               <button className="default-button btn-orange m-3">
                 Explore Now<i className="bi bi-arrow-right ms-2"></i>
