@@ -13,6 +13,7 @@ export default function CardActivity({ activity, index }) {
         style={{ backgroundColor: "#FFC47E" }}
         data-aos="fade-up"
         data-aos-delay={(index % 6) * 100}
+        data-aos-once="true"
       >
         <img
           src={activity.imageUrls[0]}

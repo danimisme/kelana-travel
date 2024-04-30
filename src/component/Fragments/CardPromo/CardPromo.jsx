@@ -11,6 +11,7 @@ export default function CardPromo({ promo, index }) {
       className="col-md-3 col-sm-6 p-3"
       data-aos="fade-up"
       data-aos-delay={index * 100}
+      data-aos-once="true"
     >
       <Link to={`/promo/${promo.id}`} className="text-decoration-none">
         <div className={`card_promo card d-flex flex-column h-100`}>
