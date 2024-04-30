@@ -15,7 +15,7 @@ export default function Home() {
   }, []);
   return (
     <Layout>
-      <main className="mt-5 py-5">
+      <main className="mt-lg-5 mt-3 py-5">
         <div className="row d-flex align-items-center justify-content-center  header-section">
           <div
             className="col-lg-5  col-10 text-header "
@@ -44,7 +44,7 @@ export default function Home() {
             <BannerCarousel />
           </div>
         </div>
-        <div className="container-lg my-5 py-5 px-4">
+        <div className="container-lg my-lg-5 my-md-3 my-1 py-3 px-4">
           <HeaderSection />
         </div>
         <div

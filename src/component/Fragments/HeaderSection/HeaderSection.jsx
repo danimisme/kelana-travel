@@ -1,7 +1,7 @@
 export default function HeaderSection() {
   return (
     <div>
-      <h2 className="orange-dark fw-bold  mb-5 text-center">
+      <h2 className="orange-dark fw-bold  mb-lg-5 mb-md-3 mb-1 text-center">
         Why Kelana Travel?
       </h2>
       <div className="row justify-content-center">
