@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ModalDelete from "../../../component/Elements/Modals/ModalDelete/ModalDelete";
 import { openModalDelete } from "../../../redux/slice/ModalDeleteSlice";
 import { useDispatch } from "react-redux";
+import "./ActivityDashboardPage.css";
 
 export default function ActivityDashboardPage() {
   const { getData } = useGetData();
@@ -83,7 +84,7 @@ export default function ActivityDashboardPage() {
             </Link>
           </div>
 
-          <div className={`d-flex justify-content-center container-lg mt-2`}>
+          <div className="header d-flex justify-content-center container-lg mt-2">
             <div className="d-flex align-items-center justify-content-center">
               <div className=" d-flex align-items-center ">
                 <p className="m-0">Filter By Category</p>
