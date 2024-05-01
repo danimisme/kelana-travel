@@ -36,10 +36,22 @@ body {
     color: #343434;
 }
 
+.card {
+    transition: ease-in-out 0.4s;
+}
+
+
+.card:hover {
+    box-shadow: none;
+    translate: 0 -10px;
+    transition: all 0.1s ease;
+}
+
 
 
 .btn-orange {
-    background-color: #ED9455;
+    /* background-color: #ED9455; */
+    background-image: linear-gradient(to bottom right, #ED9455, #e38400);
     color: white;
 }
 
