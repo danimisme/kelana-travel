@@ -42,6 +42,11 @@ export default function PromoCarousel() {
       <AliceCarousel
         mouseTracking
         infinite
+        autoPlay
+        autoPlayInterval={100}
+        animationDuration={2000}
+        animationType="fadeout"
+        disableButtonsControls
         renderNextButton={() => (
           <i
             className={`bi bi-arrow-right-short fs-1 arrow_button arrow_button_right`}
