@@ -2,17 +2,21 @@ import { Link } from "react-router-dom";
 import "./CardActivity.css";
 import Animation from "../../../utils/aos";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 export default function CardActivity({ activity, index }) {
   useEffect(() => {
     Animation();
   }, []);
+
+  const location = useLocation();
+  const pathname = location.pathname;
   return (
     <Link to={`/activity/${activity.id} `} className="text-decoration-none">
       <div
         className="card"
         style={{ backgroundColor: "#FFC47E" }}
-        data-aos="fade-up"
-        data-aos-delay={(index % 6) * 100}
+        data-aos={`${pathname === "/activity" ? "fade-up" : ""}`}
+        data-aos-delay={`${pathname === "/activity" ? (index % 6) * 100 : ""}`}
         data-aos-once="true"
       >
         <img
