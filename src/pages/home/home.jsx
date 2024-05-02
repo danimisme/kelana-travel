@@ -64,6 +64,7 @@ export default function Home() {
         <div
           className="activity_section py-5 mt-5"
           data-aos="fade-up"
+          data-aos-offset="200"
           data-aos-once="true"
         >
           <ActivityCarousel />
