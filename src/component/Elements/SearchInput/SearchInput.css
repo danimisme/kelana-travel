@@ -1,8 +1,7 @@
 .search:focus {
-  box-shadow: none;
-  outline: none;
-  border-color: #ced4da;
-  border: 1px solid #ced4da;
+  box-shadow: 0 0 0 0.2rem rgba(237, 148, 85, 0.25);
+  outline-color: #ed9455;
+  border-color: #ed9455;
+  border: 1px solid #ed9455;
   transition: all 0.3s ease;
-  color: #ced4da;
 }

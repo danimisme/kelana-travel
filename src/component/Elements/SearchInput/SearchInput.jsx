@@ -1,3 +1,4 @@
+import "./SearchInput.css";
 export default function SearchInput({ type = "text", ...props }) {
   return (
     <>
