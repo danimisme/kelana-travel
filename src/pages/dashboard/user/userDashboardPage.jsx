@@ -9,18 +9,21 @@ import useUpdate from "../../../hooks/useUpdate";
 import Pagination from "../../../component/Elements/Pagination/Pagination";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SearchInput from "../../../component/Elements/SearchInput/SearchInput";
 
 export default function UserDashboardPage() {
   const { userLog } = useAuth();
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [search, setSearch] = useState("");
   const dispatch = useDispatch();
   const { update } = useUpdate();
   const [page, setPage] = useState(1);
   const itemsPerPage = 8;
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const totalPages = Math.ceil(users.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
 
   const handleUpdateRole = (user) => {
     setUser(user);
@@ -39,17 +42,33 @@ export default function UserDashboardPage() {
   useEffect(() => {
     userLog("all-user", setUsers);
   }, []);
+  useEffect(() => {
+    setFilteredUsers(
+      users.filter((user) =>
+        user.name.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }, [users, search]);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
   return (
     <Layout>
       <ModalUpdateRole user={user} onConfirm={updateRole} />
       <div className="mt-5 container-lg">
         <div className="py-5">
-          <h1 className="text-center mb-3 text-orange">
-            <i className="bi bi-person-circle me-2"></i>User Dashboard
-          </h1>
-          <div className="row">
-            {users.slice(startIndex, endIndex).map((user, index) => (
-              <div className="col-10 col-md-4 col-lg-3 mx-auto" key={user.id}>
+          <div className="d-flex justify-content-between align-items-center my-3">
+            <h1 className="text-center mb-3 text-orange">
+              <i className="bi bi-person-circle me-2"></i>User Data
+            </h1>
+            <div>
+              <SearchInput placeholder="Search User" onChange={handleSearch} />
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            {filteredUsers.slice(startIndex, endIndex).map((user, index) => (
+              <div className="col-10 col-md-4 col-lg-3  " key={user.id}>
                 <CardUser
                   user={user}
                   index={index}
