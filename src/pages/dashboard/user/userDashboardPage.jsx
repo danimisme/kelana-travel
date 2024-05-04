@@ -58,11 +58,11 @@ export default function UserDashboardPage() {
       <ModalUpdateRole user={user} onConfirm={updateRole} />
       <div className="mt-5 container-lg">
         <div className="py-5">
-          <div className="d-flex justify-content-between align-items-center my-3">
+          <div className="d-sm-flex justify-content-between align-items-center m-3">
             <h1 className="text-center mb-3 text-orange">
               <i className="bi bi-person-circle me-2"></i>User Data
             </h1>
-            <div>
+            <div className="mx-lg-0 mx-5 ">
               <SearchInput placeholder="Search User" onChange={handleSearch} />
             </div>
           </div>
