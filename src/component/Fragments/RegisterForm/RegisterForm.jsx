@@ -62,6 +62,16 @@ export default function RegisterForm({ onSubmit }) {
       phoneNumber: e.target.phoneNumber.value,
     };
 
+    for (const key in userData) {
+      if (!userData[key]) {
+        setMessage("Please input all fields");
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+        return;
+      }
+    }
+
     if (userData.password.length < 6) {
       setMessage("Password must be at least 6 characters");
       setTimeout(() => {
@@ -84,16 +94,6 @@ export default function RegisterForm({ onSubmit }) {
         setMessage(null);
       }, 3000);
       return;
-    }
-
-    for (const key in userData) {
-      if (!userData[key]) {
-        setMessage("Please input all fields");
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
-        return;
-      }
     }
 
     onSubmit(userData);
@@ -160,8 +160,8 @@ export default function RegisterForm({ onSubmit }) {
             <div className=" mb-3">
               <Label htmlFor="role">Select Role</Label>
               <select className="form-select" id="select-role" name="role">
-                <option value="user">User</option>
                 <option value="admin">Admin</option>
+                <option value="user">User</option>
               </select>
             </div>
 
